@@ -1,9 +1,5 @@
 name: Pull Request on Branch Push
-on:
-  push:
-    branches:
-      - college
-      - home
+on: [push, pull_request]
 jobs:
   auto-pull-request:
     name: PullRequestAction
@@ -13,5 +9,4 @@ jobs:
         uses: vsoch/pull-request-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.AUTOPUSH_AUTH }}
-          BRANCH_PREFIX: ""
           PULL_REQUEST_BRANCH: "master"
