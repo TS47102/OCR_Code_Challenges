@@ -1,7 +1,0 @@
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\bin\Debug\OCR_code_challenge_Tests.dll
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\bin\Debug\OCR_code_challenge_Tests.pdb
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\obj\Debug\OCR_code_challenge_Tests.csprojResolveAssemblyReference.cache
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\obj\Debug\OCR_code_challenge_Tests.dll
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\obj\Debug\OCR_code_challenge_Tests.pdb
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\bin\Debug\OCR_code_challenges.dll
-\\socfs02.suffolkone.local\ArtsStudents$\TS47102\Courses\Computer Science\Visual Studio\OCR_code_challenges\OCR_code_challenge_Tests\bin\Debug\OCR_code_challenges.pdb
