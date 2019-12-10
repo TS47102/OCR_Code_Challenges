@@ -1,5 +1,5 @@
 name: Pull Request on Branch Push
-on: [push, pull_request]
+on: [push]
 jobs:
   auto-pull-request:
     name: PullRequestAction
