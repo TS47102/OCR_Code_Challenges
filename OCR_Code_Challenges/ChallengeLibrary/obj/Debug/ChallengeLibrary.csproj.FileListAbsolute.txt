@@ -1,0 +1,6 @@
+/Volumes/ArtsStudents$/TS47102/Courses/Computer Science/Visual Studio/OCR_Code_Challenges/ChallengeLibrary/bin/Debug/ChallengeLibrary.dll
+/Volumes/ArtsStudents$/TS47102/Courses/Computer Science/Visual Studio/OCR_Code_Challenges/ChallengeLibrary/bin/Debug/ChallengeLibrary.pdb
+/Volumes/ArtsStudents$/TS47102/Courses/Computer Science/Visual Studio/OCR_Code_Challenges/ChallengeLibrary/obj/Debug/ChallengeLibrary.csprojAssemblyReference.cache
+/Volumes/ArtsStudents$/TS47102/Courses/Computer Science/Visual Studio/OCR_Code_Challenges/ChallengeLibrary/obj/Debug/ChallengeLibrary.csproj.CoreCompileInputs.cache
+/Volumes/ArtsStudents$/TS47102/Courses/Computer Science/Visual Studio/OCR_Code_Challenges/ChallengeLibrary/obj/Debug/ChallengeLibrary.dll
+/Volumes/ArtsStudents$/TS47102/Courses/Computer Science/Visual Studio/OCR_Code_Challenges/ChallengeLibrary/obj/Debug/ChallengeLibrary.pdb
