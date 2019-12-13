@@ -47,20 +47,17 @@
     <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChallengeProxies\1-FactorialFinder\FactorialFinderProxy.cs" />
+    <Compile Include="ChallengeProxies\ChallengeIndex.cs" />
+    <Compile Include="ChallengeProxies\ChallengeProxy.cs" />
+    <Compile Include="ChallengeProxies\ChallengeProxyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChallengeBrowser\ChallengeBrowser.cs" />
-    <Compile Include="ChallengeBrowser\IConsoleMapper.cs" />
-    <Compile Include="ChallengeBrowser\Challenges\1-FactorialFinder.cs" />
-    <Compile Include="ChallengeBrowser\ConsoleMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ChallengeBrowser\" />
-    <Folder Include="ChallengeBrowser\Challenges\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ChallengeLibrary\ChallengeLibrary.csproj">
       <Project>{39198C17-F018-4A99-93CD-2E36CF71AD1E}</Project>

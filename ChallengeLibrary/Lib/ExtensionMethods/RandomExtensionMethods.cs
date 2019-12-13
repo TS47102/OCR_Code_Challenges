@@ -10,13 +10,13 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		/// <param name="random">The given random instance</param>
 		/// <param name="min">The inclusive minimum bound</param>
 		/// <param name="max">The exclusive maximum bound.  Must be greater than min</param>
-		public static long NextLong(this Random random, long min, long max)
+		public static long NextLong (this Random random, long min, long max)
 		{
 			if (max <= min)
-				throw new ArgumentOutOfRangeException("max", "max must be > min!");
+				throw new ArgumentOutOfRangeException ("max", "max must be > min!");
 
 			//Working with ulong so that modulo works correctly with values > long.MaxValue
-			ulong uRange = (ulong)(max - min);
+			ulong uRange = (ulong) (max - min);
 
 			//Prevent a modolo bias; see https://stackoverflow.com/a/10984975/238419
 			//for more information.
@@ -26,11 +26,11 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 			do
 			{
 				byte[] buf = new byte[8];
-				random.NextBytes(buf);
+				random.NextBytes (buf);
 				ulongRand = (ulong)BitConverter.ToInt64(buf, 0);
 			} while (ulongRand > ulong.MaxValue - ((ulong.MaxValue % uRange) + 1) % uRange);
 
-			return (long)(ulongRand % uRange) + min;
+			return (long) (ulongRand % uRange) + min;
 		}
 
 		/// <summary>
@@ -38,9 +38,9 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		/// </summary>
 		/// <param name="random">The given random instance.</param>
 		/// <param name="min">The inclusive minimum bound.</param>
-		public static long NextLong(this Random random, long min)
+		public static long NextLong (this Random random, long min)
 		{
-			return random.NextLong(min, long.MaxValue);
+			return random.NextLong (min, long.MaxValue);
 		}
 
 		/// <summary>
@@ -48,9 +48,9 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		/// random.Next())
 		/// </summary>
 		/// <param name="random">The given random instance</param>
-		public static long NextLong(this Random random)
+		public static long NextLong (this Random random)
 		{
-			return random.NextLong(long.MinValue, long.MaxValue);
+			return random.NextLong (long.MinValue, long.MaxValue);
 		}
 	}
 }

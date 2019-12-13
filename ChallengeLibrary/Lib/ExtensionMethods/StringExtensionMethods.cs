@@ -9,20 +9,20 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		/// </summary>
 		/// <param name="str">The given string.</param>
 		/// <returns>The given string, with the characters randomly shuffled.</returns>
-		public static string Shuffle(this string str)
+		public static string shuffle (this string str)
 		{
-			char[] array = str.ToCharArray();
-			Random rng = new Random();
+			char[] array = str.ToCharArray ();
+			Random rng = new Random ();
 			int n = array.Length;
 			while (n > 1)
 			{
 				n--;
-				int k = rng.Next(n + 1);
-				var value = array[k];
+				int k = rng.Next (n + 1);
+				char value = array[k];
 				array[k] = array[n];
 				array[n] = value;
 			}
-			return new string(array);
+			return new string (array);
 		}
 
 		/// <summary>
@@ -31,13 +31,13 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		/// <param name="str">The given string.</param>
 		/// <param name="num">The length of the output string.</param>
 		/// <returns>A string of length num, composed of random characters from the given string.</returns>
-		public static string randomSlice(this string str, int num)
+		public static string randomSlice (this string str, int num)
 		{
-			Random random = new Random();
+			Random random = new Random ();
 			string result = "";
 			while (result.Length < num)
 			{
-				result += str[random.Next(str.Length)];
+				result += str[random.Next (str.Length)];
 			}
 			return result;
 		}
@@ -47,7 +47,7 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		/// </summary>
 		/// <param name="str">The given string.</param>
 		/// <returns>A string composed of random characters from the given string.</returns>
-		public static string randomSlice(this string str)
+		public static string randomSlice (this string str)
 		{
 			return randomSlice(str, str.Length);
 		}

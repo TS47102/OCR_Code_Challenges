@@ -16,57 +16,53 @@ namespace ChallengeLibrary.Challenges._2_SpeedTracker
 	/// </summary>
 	public static class SpeedTracker
 	{
-		public const double cameraDistanceInMiles = 1;
-		public const double speedLimitMph = 70;
-		public const string outputFileExtension = "txt";
-		public static readonly char recordFieldSeperator = ',';
-		public static readonly string outputFolderPath = @"..\ProgramData\SpeedTracker\";
+		public const double CAMERA_DISTANCE_MILES = 1;
+		public const double SPEEDLIMIT_MPH = 70;
+		public static readonly char RECORD_FIELD_SEPARATOR = ',';
+		public static readonly string OUTPUTFOLDER_PATH = @"..\ProgramData\SpeedTracker\";
+		public static readonly string OUTPUTFILE_EXTENSION = "txt";
 
-		public static double averageSpeed(DateTime firstCameraTime, DateTime secondCameraTime)
+		public static double averageSpeed (DateTime firstCameraTime, DateTime secondCameraTime)
 		{
-			return cameraDistanceInMiles / secondCameraTime.Subtract(firstCameraTime).TotalHours;
+			return CAMERA_DISTANCE_MILES / secondCameraTime.Subtract (firstCameraTime).TotalHours;
 		}
 
-		public static bool validNumberPlate(string numberPlate)
+		public static bool validNumberPlate (string numberPlate)
 		{
-			return Regex.IsMatch(numberPlate, @"^[A-z]{2}\d{2}\s?[A-z]{3}$");
+			return Regex.IsMatch (numberPlate, @"^[A-z]{2}\d{2}\s?[A-z]{3}$");
 		}
 
-		public static void createOffendersFile(string inputFilePath)
+		public static void createOffendersFile (string inputFilePath)
 		{
-			if (!File.Exists(inputFilePath))
-				throw new FileNotFoundException($"File {inputFilePath} does not exist.");
+			if (!File.Exists (inputFilePath))
+				throw new FileNotFoundException ($"File {inputFilePath} does not exist.");
 
-			createOffendersFile(inputFilePath, outputFolderPath + Regex.Match(inputFilePath, @".+\\{1}(.+)\.{1}.+$").Value + "_offenders." + outputFileExtension);
+			createOffendersFile (inputFilePath, OUTPUTFOLDER_PATH + Regex.Match(inputFilePath, @".+\\{1}(.+)\.{1}.+$").Value + "_offenders." + OUTPUTFILE_EXTENSION);
 		}
 
-		public static void createOffendersFile(string inputFilePath, string outputFilePath)
+		public static void createOffendersFile (string inputFilePath, string outputFilePath)
 		{
-			using (StreamWriter writer = File.CreateText(outputFilePath))
+			using (StreamWriter writer = File.CreateText (outputFilePath))
 			{
-				foreach (string line in File.ReadLines(inputFilePath))
+				foreach (string line in File.ReadLines (inputFilePath))
 				{
-					string[] details = line.Split(recordFieldSeperator);
+					string[] details = line.Split (RECORD_FIELD_SEPARATOR);
 					if (details.Length != 2)
 						throw new IOException($"Line '{line}' in file '{inputFilePath}' has malformed format. (Incorrect number of fields)");
 
-					double speed;
-					if (!double.TryParse(details[0], out speed))
+					if (!double.TryParse (details[0], out double speed))
 						throw new IOException($"Line '{line}' in file '{inputFilePath}' has malformed format. (Speed was not a number)");
 
 					OffenceTypes offence = OffenceTypes.none;
 
-					if (speed > speedLimitMph)
+					if (speed > SPEEDLIMIT_MPH)
 						offence = OffenceTypes.speeding;
 
-					if (!validNumberPlate(details[1]))
-						if (offence == OffenceTypes.speeding)
-							offence = OffenceTypes.both;
-						else
-							offence = OffenceTypes.badNumberPlate;
+					if (!validNumberPlate (details[1]))
+						offence = offence == OffenceTypes.speeding ? OffenceTypes.both : OffenceTypes.badNumberPlate;
 
 					if (offence != OffenceTypes.none)
-						writer.WriteLine(offence.ToString() + recordFieldSeperator + speed + recordFieldSeperator + details[1]);
+						writer.WriteLine (offence.ToString() + RECORD_FIELD_SEPARATOR + speed + RECORD_FIELD_SEPARATOR + details[1]);
 				}
 			}
 		}
