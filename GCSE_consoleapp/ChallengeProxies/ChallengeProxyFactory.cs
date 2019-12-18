@@ -34,20 +34,20 @@ namespace GCSE_consoleapp.ChallengeProxies
 
 				string qualifiedClassName = getQualifiedChallengeProxyName (challengeIndex);
 
-				Type classType = Type.GetType (qualifiedClassName) ?? throw new NullReferenceException ($"Attempted to create an invalid ChallengeProxy object: {qualifiedClassName}. ({nameof (ChallengeIndex)} value existed, but could not get class Type.)");
+				Type classType = Type.GetType (qualifiedClassName) ?? throw new NullReferenceException ($"Attempted to create an invalid ChallengeProxy object: '{qualifiedClassName}'. ({nameof (ChallengeIndex)} value existed, but could not get class Type.)");
 
 				if (Activator.CreateInstance (classType) is ChallengeProxy proxyInstance)
 				{
 					if (proxyInstance.proxiedChallenge != challengeIndex)
-						throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: {qualifiedClassName}. ({nameof (ChallengeIndex)} value did not match with class {nameof (proxyInstance.proxiedChallenge)}.)", nameof (challengeIndex));
+						throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: '{qualifiedClassName}'. ({nameof (ChallengeIndex)} value did not match with class '{nameof (proxyInstance.proxiedChallenge)}'.)", nameof (challengeIndex));
 					
 					return proxyInstance;
 				}
 				else
-					throw new InvalidCastException ($"Attempted to create an invalid ChallengeProxy object: {qualifiedClassName}. ({nameof (ChallengeIndex)} value existed, but could not cast class to {nameof (ChallengeProxy)}.)");
+					throw new InvalidCastException ($"Attempted to create an invalid ChallengeProxy object: '{qualifiedClassName}'. ({nameof (ChallengeIndex)} value existed, but could not cast class to {nameof (ChallengeProxy)}.)");
 			}
 			else
-				throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: {challengeIndex}. ({nameof (ChallengeIndex)} value does not exist.)", nameof (challengeIndex));
+				throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: '{challengeIndex}'. ({nameof (ChallengeIndex)} value does not exist.)", nameof (challengeIndex));
 		}
 
 		public static ChallengeProxy getProxy (string challengeName)
@@ -55,7 +55,7 @@ namespace GCSE_consoleapp.ChallengeProxies
 			if (Enum.TryParse (challengeName, true, out ChallengeIndex challengeIndex))
 				return getProxy (challengeIndex);
 			else
-				throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: {challengeName}. ({nameof (ChallengeIndex)} value does not exist.)", nameof (challengeName));
+				throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: '{challengeName}'. ({nameof (ChallengeIndex)} value does not exist.)", nameof (challengeName));
 		}
 
 		public static ChallengeProxy getProxy (int challengeIndex)
