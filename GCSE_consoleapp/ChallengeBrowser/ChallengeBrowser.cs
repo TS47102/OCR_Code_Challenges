@@ -1,4 +1,5 @@
 ﻿using System;
+using GCSE_consoleapp.ChallengeBrowser.ExtensionMethods;
 using GCSE_consoleapp.ChallengeProxies;
 using GCSE_consoleapp.ConsoleHelpers;
 
@@ -9,7 +10,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 		private const char INPUT_ARG_SEPARATOR = ' ';
 		private const string DEFAULT_INPUT_PROMPT = "> ";
 
-		private static readonly string[] EXITCOMMANDS = new string[]
+		private readonly string[] EXITCOMMANDS = new string[]
 		{
 			"e",
 			"exit",
@@ -17,14 +18,30 @@ namespace GCSE_consoleapp.ChallengeBrowser
 			"quit"
 		};
 
-		private static CustomConsole console;
+		private readonly string[] HELPCOMMANDS = new string[]
+		{
+			"/?",
+			"?",
+			"help"
+		};
+
+		private CustomConsole console;
+
+		public ChallengeBrowser (CustomConsole console)
+		{
+			this.console = console;
+		}
 
 #pragma warning disable IDE1006 // Naming Styles, Entry point Main function must have this exact signature
 		public static void Main (string[] args)
 		{
-			console = new ColourConsole ();
+			new ChallengeBrowser (new ColourConsole ()).startBrowsing ();
+		}
+#pragma warning restore IDE1006 // Naming Styles
 
-            console.WriteLine ("GCSE-level Response Browser for OCR 2016 Coding Challenges, by Pixelstorm.");
+		public void startBrowsing ()
+		{
+			console.WriteLine ("GCSE-level Response Browser for OCR 2016 Coding Challenges, by Pixelstorm.");
 
 			ConsoleInputListener listener = new ConsoleInputListener (console);
 
@@ -33,62 +50,61 @@ namespace GCSE_consoleapp.ChallengeBrowser
 
 			listener.startListening ();
 		}
-#pragma warning restore IDE1006 // Naming Styles
 
-		private static void handlePreInputEvent (object sender, PreConsoleInputEventArgs e)
+		private void handlePreInputEvent (object sender, PreConsoleInputEventArgs e)
 		{
 			e.consoleUsed.Write (DEFAULT_INPUT_PROMPT);
 		}
 
-		private static void handlePostInputEvent (object sender, PostConsoleInputEventArgs e)
+		private void handlePostInputEvent (object sender, PostConsoleInputEventArgs e)
 		{
 			string input = e.consoleInput;
-
-			if (isExitCommand (input))
-			{
-				e.cancelRequested = true;
-				return;
-			}
-
 			if (string.IsNullOrWhiteSpace (input))
-				return;
-			
-			executeChallengeProxy (input);
+				e.consoleUsed.WriteLine ();
+			else if (HELPCOMMANDS.contains (input))
+				handleHelpCommand (sender, e);
+			else if (EXITCOMMANDS.contains (input))
+				handleExitCommand (sender, e);
+			else
+				handleProxyCommand (sender, e);
 		}
 
-		private static void executeChallengeProxy (string userInput)
+		private void handleHelpCommand (object sender, PostConsoleInputEventArgs e)
 		{
-			string[] inputargs = userInput.Split (INPUT_ARG_SEPARATOR);
-
-			if (inputargs.Length > 0)
-			{
-				ChallengeProxy proxy = null;
-
-				// Separate try/catch blocks for fetching the Proxy and executing it, for later when we can provide more detailed information about whichever is appropriate:
-				// An exception while fetching the Proxy indicates the user requesting an invalid Proxy.
-				// An exception while executing the Proxy indicates either the user providing invalid arguments, or some other execution exception by the Proxy itself.
-
-				try
-				{
-					proxy = ChallengeProxyFactory.getProxy (inputargs[0]);
-				}
-				catch (Exception e)
-				{
-					console.WriteLine (e.GetType().FullName + ": " + e.Message);
-				}
-
-				try
-				{
-					proxy?.execute (inputargs);
-				}
-				catch (Exception e)
-				{
-					console.WriteLine (e.GetType ().FullName + ": " + e.Message);
-				}
-			}
+			if (e.consoleUsed is ColourConsole c)
+				foreach (ChallengeIndex i in Enum.GetValues (typeof (ChallengeIndex)))
+					c.WriteLine (string.Format ("{{Cyan:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
+			else
+				foreach (ChallengeIndex i in Enum.GetValues (typeof (ChallengeIndex)))
+					e.consoleUsed.WriteLine (string.Format ("{0,-2:d} : {1}", (int) i, i.ToString ()));
 		}
 
-		private static bool isExitCommand(string command)
+		private void handleExitCommand (object sender, PostConsoleInputEventArgs e)
+		{
+			e.cancelRequested = true;
+		}
+
+		private void handleProxyCommand (object sender, PostConsoleInputEventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace (e.consoleInput))
+				throw new ArgumentException ("Cannot handle empty input.", nameof (e.consoleInput));
+
+			string[] args = e.consoleInput.Split (INPUT_ARG_SEPARATOR);
+
+			ChallengeProxy proxy = null;
+
+			try
+			{ proxy = ChallengeProxyFactory.getProxy (args[0]); }
+			catch (SystemException ex) when (ex is ArgumentException || ex is InvalidCastException || ex is NullReferenceException)
+			{ e.consoleUsed.WriteLine (ex.Message); }
+			
+			try
+			{ proxy.execute (args); }
+			catch (Exception ex)
+			{ e.consoleUsed.WriteLine (ex.Message); }
+		}
+
+		private bool isExitCommand(string command)
 		{
 			foreach (string exitCommand in EXITCOMMANDS)
 				if (exitCommand.Equals (command, StringComparison.InvariantCultureIgnoreCase))

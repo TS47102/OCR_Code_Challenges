@@ -156,7 +156,8 @@ namespace GCSE_consoleapp.ConsoleHelpers
 							if (inColourBlock)
 								throw new FormatException ($"{nameof (formatString)} recieved bad format string: '{format}'. (Got {nameof (STRINGFORMAT_STARTBLOCK)} char ('{STRINGFORMAT_STARTBLOCK}') while already in a block at index: {i}.)");
 							inColourBlock = true;
-							blocks.Add (currentBlock);
+							if (i != 0)
+								blocks.Add (currentBlock);
 							currentBlock = "";
 							break;
 						
@@ -183,6 +184,8 @@ namespace GCSE_consoleapp.ConsoleHelpers
 								currentBlock = "";
 								foundSeparator = true;
 							}
+							else
+								currentBlock += currentChar;
 							break;
 						
 						case STRINGFORMAT_ENDBLOCK:
@@ -228,7 +231,7 @@ namespace GCSE_consoleapp.ConsoleHelpers
 			blocks.Add (currentBlock);
 
 			if (blocks.Count != blockColours.Count)
-				throw new FormatException ($"{nameof (formatString)} recieved bad format string: '{format}'. (Got unequal number of Colour Blocks and Text Blocks - {blocks.Count} vs {blockColours.Count}.)");
+				throw new FormatException ($"{nameof (formatString)} recieved bad format string: '{format}'. (Got unequal number of Colour Blocks ({blockColours.Count}) and Text Blocks ({blocks.Count}).)");
 
 			((ConsoleColor foreground, ConsoleColor background) colours, string text)[] result = new ((ConsoleColor foreground, ConsoleColor background), string)[blocks.Count];
 

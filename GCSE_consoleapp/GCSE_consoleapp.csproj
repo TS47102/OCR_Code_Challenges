@@ -47,6 +47,7 @@
     <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChallengeBrowser\ExtensionMethods\ArrayExtensionMethods.cs" />
     <Compile Include="ChallengeProxies\1-FactorialFinder\FactorialFinderProxy.cs" />
     <Compile Include="ChallengeProxies\ChallengeIndex.cs" />
     <Compile Include="ChallengeProxies\ChallengeProxy.cs" />

@@ -4,14 +4,15 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 {
 	public static class RandomExtensionMethods
 	{
-		/// <summary>
-		/// Returns a random long from min (inclusive) to max (exclusive)
-		/// </summary>
-		/// <param name="random">The given random instance</param>
-		/// <param name="min">The inclusive minimum bound</param>
-		/// <param name="max">The exclusive maximum bound.  Must be greater than min</param>
-		public static long NextLong (this Random random, long min, long max)
-		{
+        /// <summary>
+        /// Returns a random long from min (inclusive) to max (exclusive)
+        /// </summary>
+        /// <param name="random">The given random instance</param>
+        /// <param name="min">The inclusive minimum bound</param>
+        /// <param name="max">The exclusive maximum bound.  Must be greater than min</param>
+#pragma warning disable IDE1006 // Naming Styles
+        public static long NextLong (this Random random, long min, long max)
+        {
 			if (max <= min)
 				throw new ArgumentOutOfRangeException ("max", "max must be > min!");
 
@@ -51,6 +52,7 @@ namespace ChallengeLibrary.Lib.ExtensionMethods
 		public static long NextLong (this Random random)
 		{
 			return random.NextLong (long.MinValue, long.MaxValue);
-		}
-	}
+        }
+#pragma warning restore IDE1006 // Naming Styles
+    }
 }

@@ -38,17 +38,11 @@ namespace GCSE_consoleapp.ConsoleHelpers
 				bool interrupted = false;
 
 				try
-				{
-					input = console.ReadLine ();
-				}
+				{ input = console.ReadLine (); }
 				catch (InvalidOperationException)
-				{
-					interrupted = true;
-				}
+				{ interrupted = true; }
 				catch (OperationCanceledException)
-				{
-					interrupted = true;
-				}
+				{ interrupted = true; }
 				finally
 				{
 					postInputArgs = new PostConsoleInputEventArgs (console, input, interrupted);
