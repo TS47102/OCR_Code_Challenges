@@ -2,7 +2,7 @@
 
 namespace GCSE_consoleapp.ConsoleHelpers
 {
-	public class PreConsoleInputEventArgs
+	public class PreConsoleInputEventArgs : EventArgs
 	{
 		public CustomConsole consoleUsed { get; }
 		public bool cancelRequested { get; set; }
