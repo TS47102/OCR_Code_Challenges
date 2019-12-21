@@ -7,10 +7,12 @@ namespace GCSE_consoleapp.ChallengeProxies
 		public ChallengeIndex proxiedChallenge => (ChallengeIndex)
 			Enum.Parse (typeof (ChallengeIndex), GetType ().Name.Substring (0, GetType ().Name.Length - ChallengeProxyFactory.CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX.Length));
 
+#pragma warning disable IDE1006 // Naming Styles, readonly properties are essentially constants, and Visual Studio doesn't allow for custom naming styles for readonly properties.
 		public virtual string[] VALIDNAMES => new string[] { proxiedChallenge.ToString () };
 		public virtual int MAXARGS => -1;
 
 		public abstract int MINARGS { get; }
+#pragma warning restore IDE1006 // Naming Styles
 
 		public abstract void printUsage ();
 		public abstract void printDescription ();

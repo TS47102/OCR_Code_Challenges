@@ -37,7 +37,7 @@ namespace GCSE_consoleapp.ChallengeProxies._1_FactorialFinder
 
 		protected override void do_execute (string[] args)
 		{
-			if (uint.TryParse (args[args.Length - 1], out uint value))
+			if (int.TryParse (args[args.Length - 1], out int value))
 			{
 				if (args.Length > MINARGS)
 				{

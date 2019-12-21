@@ -1,11 +1,11 @@
 ﻿using System;
-using GCSE_consoleapp.ChallengeBrowser.ExtensionMethods;
 using GCSE_consoleapp.ChallengeProxies;
-using GCSE_consoleapp.ConsoleHelpers;
+using PixelLib.ConsoleHelpers;
+using PixelLib.ExtensionMethods;
 
 namespace GCSE_consoleapp.ChallengeBrowser
 {
-    public class ChallengeBrowser
+	public class ChallengeBrowser
     {
 		private const char INPUT_ARG_SEPARATOR = ' ';
 		private const string DEFAULT_INPUT_PROMPT = "> ";

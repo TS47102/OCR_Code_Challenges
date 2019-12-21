@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCSE_consoleapp", "GCSE_consoleapp\GCSE_consoleapp.csproj", "{65FA1814-24AC-4618-AD0C-E0743E8B983F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A-Level_WPFApp", "A-Level_WPFApp\A-Level_WPFApp.csproj", "{FAA9A09E-B03C-453C-9212-C26767079DC5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{39198C17-F018-4A99-93CD-2E36CF71AD1E} = {39198C17-F018-4A99-93CD-2E36CF71AD1E}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450E29F3-9990-4F78-9F3B-D85803617B22}"
 	ProjectSection(SolutionItems) = preProject

@@ -13,28 +13,42 @@ namespace ChallengeLibrary.Challenges._1_FactorialFinder
 	public static class FactorialFinder
 	{
 		/// <summary>
-		/// Calculates the factorial of <c>number</c> iteratively, using a <c>while</c> loop.
+		/// Calculates the factorial of <paramref name="number"/> iteratively.
 		/// </summary>
 		/// <param name="number">The value to calculate the factorial of.</param>
-		/// <returns>The factorial of <c>number</c>.</returns>
-		/// <exception cref="OverflowException">Thrown when the factorial of <c>number</c> is greater than 18,446,744,073,709,551,615.
-		/// (Thus meaning whenever <c>number</c> is greater than 20.)</exception>
-		public static ulong factorialFind_iterative (uint number)
+		/// <returns>The factorial of <paramref name="number"/>.</returns>
+		/// <exception cref="OverflowException">Thrown whenever the resulting factorial of <paramref name="number"/> exceeds <see cref="long.MaxValue"/>.
+		/// In practice, this occurs whenever <paramref name="number"/> is greater than <c>20</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">Thrown whenever <paramref name="number"/> is less than <c>0</c>.</exception>
+		public static long factorialFind_iterative (int number)
 		{
-			ulong product = 1;
+			if (number < 0)
+				throw new ArgumentOutOfRangeException (nameof (number), number, "Factorial is not defined for negative values.");
+
+			long product = 1;
 			while (number > 0)
 				product = checked (product * number--);
 			return product;
 		}
 
 		/// <summary>
-		/// Calculates the factorial of <c>number</c> recursively, using tail-call optimisation. (However this is not guranteed, see <see cref="https://stackoverflow.com/q/491376"/>.)
+		/// Calculates the factorial of <paramref name="number"/> recursively.
 		/// </summary>
+		/// <remarks>This function is designed to take advantage of tail-call optimisation, but this optimisation actually being applied is not guranteed by C#.</remarks>
 		/// <param name="number">The value to calculate the factorial of.</param>
-		/// <returns>The factorial of <c>number</c>.</returns>
-		/// <exception cref="OverflowException">Thrown when the factorial of <c>number</c> is greater than 18,446,744,073,709,551,615.
-		/// (Thus meaning whenever <c>number</c> is greater than 20.)</exception>
-		public static ulong factorialFind_recursive (uint number, ulong accumulator = 1)
+		/// <returns>The factorial of <paramref name="number"/>.</returns>
+		/// <exception cref="OverflowException">Thrown whenever the resulting factorial of <paramref name="number"/> exceeds <see cref="long.MaxValue"/>.
+		/// In practice, this occurs whenever <paramref name="number"/> is greater than <c>20</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">Thrown whenever <paramref name="number"/> is less than <c>0</c>.</exception>
+		public static long factorialFind_recursive (int number)
+		{
+			if (number < 0)
+				throw new ArgumentOutOfRangeException (nameof (number), number, "Factorial is not defined for negative values.");
+
+			return factorialFind_recursive (number, 1);
+		}
+		
+		private static long factorialFind_recursive (int number, long accumulator)
 		{
 			if (accumulator == 0)
 				throw new ArgumentOutOfRangeException (nameof (accumulator), accumulator, "Accumulator must not be less than 1.");
