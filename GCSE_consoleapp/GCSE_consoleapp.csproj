@@ -52,9 +52,6 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PixelLib">
-      <HintPath>..\..\PixelLib\PixelLib\bin\Release\PixelLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -96,6 +93,10 @@
     <ProjectReference Include="..\ChallengeLibrary\ChallengeLibrary.csproj">
       <Project>{39198C17-F018-4A99-93CD-2E36CF71AD1E}</Project>
       <Name>ChallengeLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\PixelLib\PixelLib\PixelLib.csproj">
+      <Project>{ac063f49-84d8-4e76-9016-9eaf8d5e0a29}</Project>
+      <Name>PixelLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

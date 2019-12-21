@@ -1,0 +1,3 @@
+[submodule "lib/PixelLib"]
+	path = lib/PixelLib
+	url = https://github.com/Pixelstormer/PixelLib.git
