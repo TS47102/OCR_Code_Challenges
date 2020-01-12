@@ -34,7 +34,7 @@ namespace GCSE_consoleapp.ChallengeProxies
 
 				string qualifiedClassName = getQualifiedChallengeProxyName (challengeIndex);
 
-				Type classType = Type.GetType (qualifiedClassName) ?? throw new NullReferenceException ($"Attempted to create an invalid ChallengeProxy object: '{qualifiedClassName}'. ({nameof (ChallengeIndex)} value existed, but could not get class Type.)");
+				Type classType = Type.GetType (qualifiedClassName) ?? throw new ArgumentNullException (nameof (challengeIndex), $"Attempted to create an invalid ChallengeProxy object: '{qualifiedClassName}'. ({nameof (ChallengeIndex)} value existed, but could not get class Type.)");
 
 				if (Activator.CreateInstance (classType) is ChallengeProxy proxyInstance)
 				{

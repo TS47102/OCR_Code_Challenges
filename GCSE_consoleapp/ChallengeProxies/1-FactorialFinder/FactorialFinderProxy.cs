@@ -37,6 +37,9 @@ namespace GCSE_consoleapp.ChallengeProxies._1_FactorialFinder
 
 		protected override void do_execute (string[] args)
 		{
+			if (args == null)
+				throw new ArgumentNullException (nameof (args), "Cannot execute with null args.");
+
 			if (int.TryParse (args[args.Length - 1], out int value))
 			{
 				if (args.Length > MINARGS)

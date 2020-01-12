@@ -7,14 +7,14 @@ using PixelLib.ExtensionMethods;
 
 namespace GCSE_consoleapp.ChallengeBrowser
 {
-	public class ChallengeBrowser
+	public class ConsoleBrowser
     {
 		private const char INPUT_BLOCK_DELIMITER = '"';
 		private const char INPUT_ARG_DELIMITER = ' ';
 		private const char INPUT_ESCAPE_CHAR = '\\';
 		private const string DEFAULT_INPUT_PROMPT = "> ";
 		private const int AUTOEXIT_MILLIS = 5000;
-		private const StringComparison COMPARISON_OPTIONS = StringComparison.InvariantCultureIgnoreCase;
+		private const StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
 
 		private readonly string[] EXITCOMMANDS = new string[]
 		{
@@ -40,7 +40,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 
 		private ColourConsole console;
 
-		public ChallengeBrowser (ColourConsole console)
+		public ConsoleBrowser (ColourConsole console)
 		{
 			this.console = console;
 		}
@@ -48,7 +48,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 #pragma warning disable IDE1006 // Naming Styles, Entry point Main function must have this exact signature
 		public static void Main (string[] args)
 		{
-			new ChallengeBrowser (new ColourConsole ()).startBrowsing ();
+			new ConsoleBrowser (new ColourConsole ()).startBrowsing ();
 		}
 #pragma warning restore IDE1006 // Naming Styles
 
@@ -145,7 +145,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 
 		private void handleExitCommand (object sender, PostConsoleInputEventArgs e)
 		{
-			if (confirmExit (console))
+			if (confirmExit ())
 			{
 				console.WriteLine ("{0:1}Requesting to exit program...", ConsoleColor.Cyan, ConsoleColor.Red);
 				e.cancelRequested = true;
@@ -157,7 +157,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 		private void handleProxyCommand (object sender, PostConsoleInputEventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
-				throw new ArgumentException ("Cannot handle empty input.", nameof (e.consoleInput));
+				throw new ArgumentException ("Cannot handle empty input.", nameof (e));
 
 			string[] args = parseArgs (e.consoleInput);
 
@@ -225,7 +225,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 			return blocks.ToArray ();
 		}
 
-		private bool confirmExit (ColourConsole console)
+		private bool confirmExit ()
 		{
 			console.WriteLine ("{0:1}Are you sure you want to exit the program? (Y/N)", ConsoleColor.Cyan, ConsoleColor.Red);
 			console.Write (DEFAULT_INPUT_PROMPT);

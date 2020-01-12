@@ -53,21 +53,21 @@ namespace ChallengeLibrary.Challenges._2_SpeedTracker
 					if (!double.TryParse (details[0], out double speed))
 						throw new IOException($"Line '{line}' in file '{inputFilePath}' has malformed format. (Speed was not a number)");
 
-					OffenceTypes offence = OffenceTypes.none;
+					OffenceType offence = OffenceType.none;
 
 					if (speed > SPEEDLIMIT_MPH)
-						offence = OffenceTypes.speeding;
+						offence = OffenceType.speeding;
 
 					if (!validNumberPlate (details[1]))
-						offence = offence == OffenceTypes.speeding ? OffenceTypes.both : OffenceTypes.badNumberPlate;
+						offence = offence == OffenceType.speeding ? OffenceType.both : OffenceType.badNumberPlate;
 
-					if (offence != OffenceTypes.none)
+					if (offence != OffenceType.none)
 						writer.WriteLine (offence.ToString() + RECORD_FIELD_SEPARATOR + speed + RECORD_FIELD_SEPARATOR + details[1]);
 				}
 			}
 		}
 
-		public enum OffenceTypes
+		public enum OffenceType
 		{
 			speeding,
 			badNumberPlate,
