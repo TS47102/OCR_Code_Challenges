@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using GCSE_consoleapp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
@@ -170,7 +171,7 @@ namespace GCSE_consoleapp.Browser
 		private void displayChallengeInformation (ColourConsole console)
 		{
 			for (ChallengeIndex i = ChallengeIndex.FactorialFinder; i <= ChallengeIndex.HappyHopper; i++)
-				console.WriteLine (string.Format ("{{Yellow:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
+				console.WriteLine (string.Format (CultureInfo.CurrentCulture, "{{Yellow:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
 		}
 
 		/// <summary>
