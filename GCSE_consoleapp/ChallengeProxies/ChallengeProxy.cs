@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GCSE_consoleapp.ChallengeProxies
+namespace GCSE_ConsoleApp.ChallengeProxies
 {
 	public abstract class ChallengeProxy
 	{

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using GCSE_consoleapp.ChallengeProxies;
+using GCSE_ConsoleApp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
 
-namespace GCSE_consoleapp.Browser
+namespace GCSE_ConsoleApp.Browser
 {
 	/// <summary>
 	/// Allows the user to browse and interact with <see cref="ChallengeProxy"/>s via the command line.

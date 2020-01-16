@@ -8,11 +8,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("GCSE_consoleapp")]
+[assembly: AssemblyTitle ("GCSE_ConsoleApp")]
 [assembly: AssemblyDescription ("GCSE-level Command-line response to OCR Coding Challenges")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Pixelstorm")]
-[assembly: AssemblyProduct ("GCSE_consoleapp")]
+[assembly: AssemblyProduct ("GCSE_ConsoleApp")]
 [assembly: AssemblyCopyright ("Copyright © Pixelstorm 2019")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]

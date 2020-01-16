@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using PixelLib.ConsoleHelpers;
 
-namespace GCSE_consoleapp.Browser
+namespace GCSE_ConsoleApp.Browser
 {
 	/// <summary>
 	/// Static class that contains the entry point and default fields.

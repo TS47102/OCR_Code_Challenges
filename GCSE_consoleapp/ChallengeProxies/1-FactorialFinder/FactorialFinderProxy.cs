@@ -1,7 +1,7 @@
 ﻿using System;
 using ChallengeLibrary.Challenges._1_FactorialFinder;
 
-namespace GCSE_consoleapp.ChallengeProxies._1_FactorialFinder
+namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 {
 	public class FactorialFinderProxy : ChallengeProxy
 	{

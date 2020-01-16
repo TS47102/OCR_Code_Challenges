@@ -1,4 +1,4 @@
-﻿namespace GCSE_consoleapp.ChallengeProxies
+﻿namespace GCSE_ConsoleApp.ChallengeProxies
 {
 	public enum ChallengeIndex
 	{

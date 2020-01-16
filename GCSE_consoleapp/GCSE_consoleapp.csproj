@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{65FA1814-24AC-4618-AD0C-E0743E8B983F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GCSE_consoleapp</RootNamespace>
-    <AssemblyName>GCSE_consoleapp</AssemblyName>
+    <RootNamespace>GCSE_ConsoleApp</RootNamespace>
+    <AssemblyName>GCSE_ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

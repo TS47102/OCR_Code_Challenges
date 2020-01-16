@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeLibrary", "ChallengeLibrary\ChallengeLibrary.csproj", "{39198C17-F018-4A99-93CD-2E36CF71AD1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCSE_consoleapp", "GCSE_consoleapp\GCSE_consoleapp.csproj", "{65FA1814-24AC-4618-AD0C-E0743E8B983F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCSE_ConsoleApp", "GCSE_consoleapp\GCSE_ConsoleApp.csproj", "{65FA1814-24AC-4618-AD0C-E0743E8B983F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29} = {AC063F49-84D8-4E76-9016-9EAF8D5E0A29}
 	EndProjectSection
