@@ -168,7 +168,7 @@ namespace GCSE_consoleapp.Browser
 		/// List information about <see cref="ChallengeProxy"/>s.
 		/// </summary>
 		/// <param name="console">The <see cref="ColourConsole"/> to write the information to.</param>
-		private void displayChallengeInformation (ColourConsole console)
+		private static void displayChallengeInformation (ColourConsole console)
 		{
 			for (ChallengeIndex i = ChallengeIndex.FactorialFinder; i <= ChallengeIndex.HappyHopper; i++)
 				console.WriteLine (string.Format (CultureInfo.CurrentCulture, "{{Yellow:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
