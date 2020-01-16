@@ -193,7 +193,7 @@ namespace GCSE_ConsoleApp.Browser
 		/// Invoke a <see cref="ChallengeProxy"/>.
 		/// </summary>
 		/// <param name="e">The event args.</param>
-		private void invokeProxy (PostConsoleInputEventArgs e)
+		private static void invokeProxy (PostConsoleInputEventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
 				throw new ArgumentException ("Cannot handle empty input.", nameof (e));
