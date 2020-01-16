@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using GCSE_consoleapp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
@@ -57,26 +56,28 @@ namespace GCSE_consoleapp.Browser
 			"--list",
 			"challenges",
 		};
-
-		private ColourConsole console { get; }
-		private string inputPrompt { get; }
+		
+		/// <summary>
+		/// The <see cref="string"/> to display just before polling for user input.
+		/// </summary>
+		private string inputPrompt { get; set; }
 
 		/// <summary>
-		/// Creates a new <see cref="ChallengeBrowser"/> with the specified <see cref="ColourConsole"/>.
+		/// Creates a new <see cref="ChallengeBrowser"/> with the specified input prompt.
 		/// </summary>
-		/// <param name="console">The <see cref="ColourConsole"/> to use.</param>
-		public ChallengeBrowser (ColourConsole console, string inputPrompt)
+		/// <param name="inputPrompt">The <see cref="string"/> to display just before polling for user input.</param>
+		public ChallengeBrowser (string inputPrompt)
 		{
-			this.console = console;
 			this.inputPrompt = inputPrompt;
 		}
 
 		/// <summary>
 		/// Begin interacting with the user.
 		/// </summary>
-		public void startBrowsing ()
+		/// <param name="console">The <see cref="ColourConsole"/> through which to interact with the user.</param>
+		public void startBrowsing (ColourConsole console)
 		{
-			handleHelpCommand (this, new PostConsoleInputEventArgs (console, null));
+			displayHelpInformation (console);
 
 			ConsoleInputListener listener = new ConsoleInputListener (console);
 
@@ -84,8 +85,6 @@ namespace GCSE_consoleapp.Browser
 			listener.postConsoleInputEvent += handlePostInputEvent;
 
 			listener.startListening ();
-
-			
 		}
 
 		/// <summary>
@@ -109,21 +108,20 @@ namespace GCSE_consoleapp.Browser
 			if (string.IsNullOrWhiteSpace (input))
 				e.consoleUsed.WriteLine ();
 			else if (HELPCOMMANDS.contains (input, StringComparison.OrdinalIgnoreCase))
-				handleHelpCommand (sender, e);
+				displayHelpInformation (e.consoleUsed as ColourConsole);
 			else if (INFOCOMMANDS.contains (input, StringComparison.OrdinalIgnoreCase))
-				handleInfoCommand (sender, e);
+				displayChallengeInformation (e.consoleUsed as ColourConsole);
 			else if (EXITCOMMANDS.contains (input, StringComparison.OrdinalIgnoreCase))
-				handleExitCommand (sender, e);
+				confirmExit (e);
 			else
-				handleProxyCommand (sender, e);
+				invokeProxy (e);
 		}
 
 		/// <summary>
 		/// Display help information, e.g. available commands.
 		/// </summary>
-		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
-		/// <param name="e">The event args.</param>
-		private void handleHelpCommand (object sender, PostConsoleInputEventArgs e)
+		/// <param name="console">The <see cref="ColourConsole"/> to write the help information to.</param>
+		private void displayHelpInformation (ColourConsole console)
 		{
 			ConsoleColor flagColour = ConsoleColor.Cyan;
 			ConsoleColor separatorColour = ConsoleColor.White;
@@ -168,9 +166,8 @@ namespace GCSE_consoleapp.Browser
 		/// <summary>
 		/// List information about <see cref="ChallengeProxy"/>s.
 		/// </summary>
-		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
-		/// <param name="e">The event args.</param>
-		private void handleInfoCommand (object sender, PostConsoleInputEventArgs e)
+		/// <param name="console">The <see cref="ColourConsole"/> to write the information to.</param>
+		private void displayChallengeInformation (ColourConsole console)
 		{
 			for (ChallengeIndex i = ChallengeIndex.FactorialFinder; i <= ChallengeIndex.HappyHopper; i++)
 				console.WriteLine (string.Format ("{{Yellow:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
@@ -179,25 +176,23 @@ namespace GCSE_consoleapp.Browser
 		/// <summary>
 		/// Exit the program.
 		/// </summary>
-		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
 		/// <param name="e">The event args.</param>
-		private void handleExitCommand (object sender, PostConsoleInputEventArgs e)
+		private void confirmExit (PostConsoleInputEventArgs e)
 		{
-			if (confirmExit ())
+			if (confirmExit (e.consoleUsed as ColourConsole))
 			{
-				console.WriteLine ("{0:1}Requesting to exit program...", ConsoleColor.Cyan, ConsoleColor.Red);
+				e.consoleUsed.WriteLine ("{0:1}Requesting to exit program...", ConsoleColor.Cyan, ConsoleColor.Red);
 				e.cancelRequested = true;
 			}
 			else
-				console.WriteLine ("{0:1}Aborted program exit.", ConsoleColor.Cyan, ConsoleColor.Red);
+				e.consoleUsed.WriteLine ("{0:1}Aborted program exit.", ConsoleColor.Cyan, ConsoleColor.Red);
 		}
 
 		/// <summary>
 		/// Invoke a <see cref="ChallengeProxy"/>.
 		/// </summary>
-		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
 		/// <param name="e">The event args.</param>
-		private void handleProxyCommand (object sender, PostConsoleInputEventArgs e)
+		private void invokeProxy (PostConsoleInputEventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
 				throw new ArgumentException ("Cannot handle empty input.", nameof (e));
@@ -209,12 +204,12 @@ namespace GCSE_consoleapp.Browser
 			try
 			{ proxy = ChallengeProxyFactory.getProxy (args [0]); }
 			catch (SystemException ex) when (ex is ArgumentException || ex is InvalidCastException || ex is NullReferenceException)
-			{ console.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+			{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 
 			try
 			{ proxy.execute (args); }
 			catch (Exception ex)
-			{ console.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+			{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 
 		/// <summary>
@@ -277,7 +272,7 @@ namespace GCSE_consoleapp.Browser
 		/// Double-check if the user really wants to exit.
 		/// </summary>
 		/// <returns>A <see cref="bool"/> representing whether or not the user confirmed the exit request.</returns>
-		private bool confirmExit ()
+		private bool confirmExit (ColourConsole console)
 		{
 			console.WriteLine ("{0:1}Are you sure you want to exit the program? (Y/N)", ConsoleColor.Cyan, ConsoleColor.Red);
 			console.Write (inputPrompt);

@@ -34,7 +34,7 @@ namespace GCSE_consoleapp.Browser
 		{
 			ColourConsole console = new ColourConsole (FOREGROUND_COLOUR, BACKGROUND_COLOUR);
 
-			new ChallengeBrowser (console, DEFAULT_INPUT_PROMPT).startBrowsing ();
+			new ChallengeBrowser (DEFAULT_INPUT_PROMPT).startBrowsing (console);
 
 			finishExit (console);
 		}
