@@ -64,12 +64,12 @@
     <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Browser\ChallengeBrowser.cs" />
     <Compile Include="ChallengeProxies\1-FactorialFinder\FactorialFinderProxy.cs" />
     <Compile Include="ChallengeProxies\ChallengeIndex.cs" />
     <Compile Include="ChallengeProxies\ChallengeProxy.cs" />
     <Compile Include="ChallengeProxies\ChallengeProxyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ChallengeBrowser\ChallengeBrowser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
