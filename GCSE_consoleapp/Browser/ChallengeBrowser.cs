@@ -12,12 +12,35 @@ namespace GCSE_consoleapp.Browser
 	/// </summary>
 	public class ChallengeBrowser
 	{
+		/// <summary>
+		/// The <see cref="char"/> to signal the start/end of a string literal in an argument.
+		/// </summary>
 		private const char INPUT_BLOCK_DELIMITER = '"';
+
+		/// <summary>
+		/// The <see cref="char"/> to seperate arguments with.
+		/// </summary>
 		private const char INPUT_ARG_DELIMITER = ' ';
+
+		/// <summary>
+		/// The <see cref="char"/> to escape the next <see cref="char"/> in an argument.
+		/// </summary>
 		private const char INPUT_ESCAPE_CHAR = '\\';
-		private const string DEFAULT_INPUT_PROMPT = "> ";
-		private const int AUTOEXIT_MILLIS = 5000;
-		private const StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
+
+		/// <summary>
+		/// The <see cref="string"/> to display whenever user input is polled.
+		/// </summary>
+		private readonly string DEFAULT_INPUT_PROMPT = "> ";
+
+		/// <summary>
+		/// The time, in milliseconds, before the program automatically closes after exiting.
+		/// </summary>
+		private readonly int AUTOEXIT_MILLIS = 5000;
+
+		/// <summary>
+		/// The <see cref="StringComparison"/> to use when processing user input.
+		/// </summary>
+		private readonly StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
 
 		/// <summary>
 		/// Commands to exit the browser.
