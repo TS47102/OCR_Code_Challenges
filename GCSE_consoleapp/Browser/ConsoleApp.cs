@@ -30,14 +30,11 @@ namespace GCSE_ConsoleApp.Browser
 		private static readonly ConsoleColor BACKGROUND_COLOUR = ConsoleColor.Black;
 
 #pragma warning disable IDE1006 // Naming Styles - Main function requires this exact signature.
-		public static void Main (string[] args)
+		public static void Main ()
 		{
 			ColourConsole console = new ColourConsole (FOREGROUND_COLOUR, BACKGROUND_COLOUR);
 
-			console.Write ("{0:1}Command-line Challenge Browser:", ConsoleColor.Black, ConsoleColor.White);
-			foreach (string s in args)
-				console.Write ($"{{0:1}} {s} ", ConsoleColor.Black, ConsoleColor.White);
-			console.WriteLine ();
+			console.WriteLine ("{0:1}Command-line Challenge Browser by Pixelstorm.", ConsoleColor.Black, ConsoleColor.White);
 
 			new ChallengeBrowser (DEFAULT_INPUT_PROMPT).startBrowsing (console);
 
