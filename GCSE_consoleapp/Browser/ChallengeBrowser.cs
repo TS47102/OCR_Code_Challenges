@@ -5,10 +5,10 @@ using GCSE_consoleapp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
 
-namespace GCSE_consoleapp.ChallengeBrowser
+namespace GCSE_consoleapp.Browser
 {
-	public class ConsoleBrowser
-    {
+	public class ChallengeBrowser
+	{
 		private const char INPUT_BLOCK_DELIMITER = '"';
 		private const char INPUT_ARG_DELIMITER = ' ';
 		private const char INPUT_ESCAPE_CHAR = '\\';
@@ -17,40 +17,40 @@ namespace GCSE_consoleapp.ChallengeBrowser
 		private const StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
 
 		private readonly string[] EXITCOMMANDS = new string[]
-		{
-			"e",
-			"exit",
-			"q",
-			"quit"
-		};
+			{
+				"e",
+				"exit",
+				"q",
+				"quit"
+			};
 
 		private readonly string[] HELPCOMMANDS = new string[]
-		{
-			"/?",
-			"?",
-			"help"
-		};
+			{
+				"/?",
+				"?",
+				"help"
+			};
 
 		private readonly string[] INFOCOMMANDS = new string[]
-		{
-			"l",
-			"--list",
-			"challenges",
-		};
+			{
+				"l",
+				"--list",
+				"challenges",
+			};
 
 		private ColourConsole console;
 
-		public ConsoleBrowser (ColourConsole console)
+		public ChallengeBrowser (ColourConsole console)
 		{
 			this.console = console;
 		}
 
-#pragma warning disable IDE1006 // Naming Styles, Entry point Main function must have this exact signature
-		public static void Main (string[] args)
+	#pragma warning disable IDE1006 // Naming Styles, Entry point Main function must have this exact signature
+		public static void Main (string [] args)
 		{
-			new ConsoleBrowser (new ColourConsole ()).startBrowsing ();
+			new ChallengeBrowser (new ColourConsole ()).startBrowsing ();
 		}
-#pragma warning restore IDE1006 // Naming Styles
+	#pragma warning restore IDE1006 // Naming Styles
 
 		public void startBrowsing ()
 		{
@@ -109,7 +109,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 			{
 				if (i > 0)
 					console.Write ("{0:}|", separatorColour);
-				console.Write ("{0:}" + HELPCOMMANDS[i], flagColour);
+				console.Write ("{0:}" + HELPCOMMANDS [i], flagColour);
 			}
 			console.Write ("{0:}>", separatorColour);
 			console.WriteLine ("{0:}: Display this help menu.", descriptionColour);
@@ -120,7 +120,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 			{
 				if (i > 0)
 					console.Write ("{0:}|", separatorColour);
-				console.Write ("{0:}" + INFOCOMMANDS[i], flagColour);
+				console.Write ("{0:}" + INFOCOMMANDS [i], flagColour);
 			}
 			console.Write ("{0:}>", separatorColour);
 			console.WriteLine ("{0:}: Display a list of all challenges.", descriptionColour);
@@ -131,7 +131,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 			{
 				if (i > 0)
 					console.Write ("{0:}|", separatorColour);
-				console.Write ("{0:}" + EXITCOMMANDS[i], flagColour);
+				console.Write ("{0:}" + EXITCOMMANDS [i], flagColour);
 			}
 			console.Write ("{0:}>", separatorColour);
 			console.WriteLine ("{0:}: Quit the program.", descriptionColour);
@@ -153,28 +153,28 @@ namespace GCSE_consoleapp.ChallengeBrowser
 			else
 				console.WriteLine ("{0:1}Aborted program exit.", ConsoleColor.Cyan, ConsoleColor.Red);
 		}
-		
+
 		private void handleProxyCommand (object sender, PostConsoleInputEventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
 				throw new ArgumentException ("Cannot handle empty input.", nameof (e));
 
-			string[] args = parseArgs (e.consoleInput);
+			string [] args = parseArgs (e.consoleInput);
 
 			ChallengeProxy proxy = null;
 
 			try
-			{ proxy = ChallengeProxyFactory.getProxy (args[0]); }
+			{ proxy = ChallengeProxyFactory.getProxy (args [0]); }
 			catch (SystemException ex) when (ex is ArgumentException || ex is InvalidCastException || ex is NullReferenceException)
 			{ console.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
-			
+
 			try
 			{ proxy.execute (args); }
 			catch (Exception ex)
 			{ console.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 
-		private string[] parseArgs (string rawArgs)
+		private string [] parseArgs (string rawArgs)
 		{
 			List<string> blocks = new List<string> (5);
 
@@ -184,7 +184,7 @@ namespace GCSE_consoleapp.ChallengeBrowser
 
 			for (int i = 0; i < rawArgs.Length; i++)
 			{
-				char currentChar = rawArgs[i];
+				char currentChar = rawArgs [i];
 
 				if (escapeNextChar)
 				{
