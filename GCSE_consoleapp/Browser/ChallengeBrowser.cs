@@ -7,6 +7,9 @@ using PixelLib.ExtensionMethods;
 
 namespace GCSE_consoleapp.Browser
 {
+	/// <summary>
+	/// Allows the user to browse and interact with <see cref="ChallengeProxy"/>s via the command line.
+	/// </summary>
 	public class ChallengeBrowser
 	{
 		private const char INPUT_BLOCK_DELIMITER = '"';
@@ -16,30 +19,46 @@ namespace GCSE_consoleapp.Browser
 		private const int AUTOEXIT_MILLIS = 5000;
 		private const StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
 
+		/// <summary>
+		/// Commands to exit the browser.
+		/// </summary>
 		private readonly string[] EXITCOMMANDS = new string[]
-			{
-				"e",
-				"exit",
-				"q",
-				"quit"
-			};
+		{
+			"e",
+			"exit",
+			"q",
+			"quit"
+		};
 
+		/// <summary>
+		/// Commands to display help information.
+		/// </summary>
 		private readonly string[] HELPCOMMANDS = new string[]
-			{
-				"/?",
-				"?",
-				"help"
-			};
+		{
+			"/?",
+			"?",
+			"help"
+		};
 
+		/// <summary>
+		/// Commands to list challenge information.
+		/// </summary>
 		private readonly string[] INFOCOMMANDS = new string[]
-			{
-				"l",
-				"--list",
-				"challenges",
-			};
+		{
+			"l",
+			"--list",
+			"challenges",
+		};
 
+		/// <summary>
+		/// <see cref="ColourConsole"/> to use for polling input and writing text.
+		/// </summary>
 		private ColourConsole console;
 
+		/// <summary>
+		/// Creates a new <see cref="ChallengeBrowser"/> with the specified <see cref="ColourConsole"/>.
+		/// </summary>
+		/// <param name="console">The <see cref="ColourConsole"/> to use.</param>
 		public ChallengeBrowser (ColourConsole console)
 		{
 			this.console = console;
@@ -52,6 +71,9 @@ namespace GCSE_consoleapp.Browser
 		}
 	#pragma warning restore IDE1006 // Naming Styles
 
+		/// <summary>
+		/// Begin interacting with the user.
+		/// </summary>
 		public void startBrowsing ()
 		{
 			handleHelpCommand (this, new PostConsoleInputEventArgs (console, ""));
@@ -75,11 +97,21 @@ namespace GCSE_consoleapp.Browser
 			console.WriteLine ("{0:1}Closing program.", ConsoleColor.Black, ConsoleColor.White);
 		}
 
+		/// <summary>
+		/// Display the input prompt just before polling for input.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
+		/// <param name="e">The event args.</param>
 		private void handlePreInputEvent (object sender, PreConsoleInputEventArgs e)
 		{
 			e.consoleUsed.Write (DEFAULT_INPUT_PROMPT);
 		}
 
+		/// <summary>
+		/// Process user input.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
+		/// <param name="e">The event args.</param>
 		private void handlePostInputEvent (object sender, PostConsoleInputEventArgs e)
 		{
 			string input = e.consoleInput;
@@ -95,6 +127,11 @@ namespace GCSE_consoleapp.Browser
 				handleProxyCommand (sender, e);
 		}
 
+		/// <summary>
+		/// Display help information, e.g. available commands.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
+		/// <param name="e">The event args.</param>
 		private void handleHelpCommand (object sender, PostConsoleInputEventArgs e)
 		{
 			ConsoleColor flagColour = ConsoleColor.Cyan;
@@ -137,12 +174,22 @@ namespace GCSE_consoleapp.Browser
 			console.WriteLine ("{0:}: Quit the program.", descriptionColour);
 		}
 
+		/// <summary>
+		/// List information about <see cref="ChallengeProxy"/>s.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
+		/// <param name="e">The event args.</param>
 		private void handleInfoCommand (object sender, PostConsoleInputEventArgs e)
 		{
 			for (ChallengeIndex i = ChallengeIndex.FactorialFinder; i <= ChallengeIndex.HappyHopper; i++)
 				console.WriteLine (string.Format ("{{Yellow:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
 		}
 
+		/// <summary>
+		/// Exit the program.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
+		/// <param name="e">The event args.</param>
 		private void handleExitCommand (object sender, PostConsoleInputEventArgs e)
 		{
 			if (confirmExit ())
@@ -154,6 +201,11 @@ namespace GCSE_consoleapp.Browser
 				console.WriteLine ("{0:1}Aborted program exit.", ConsoleColor.Cyan, ConsoleColor.Red);
 		}
 
+		/// <summary>
+		/// Invoke a <see cref="ChallengeProxy"/>.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that invoked the event.</param>
+		/// <param name="e">The event args.</param>
 		private void handleProxyCommand (object sender, PostConsoleInputEventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
@@ -174,9 +226,14 @@ namespace GCSE_consoleapp.Browser
 			{ console.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 
+		/// <summary>
+		/// Split a raw <see cref="string"/> input into an array of arguments.
+		/// </summary>
+		/// <param name="rawArgs">The <see cref="string"/> to parse into an array of arguments.</param>
+		/// <returns>An array of the arguments in <paramref name="rawArgs"/>.</returns>
 		private string [] parseArgs (string rawArgs)
 		{
-			List<string> blocks = new List<string> (5);
+			List<string> blocks = new List<string> ();
 
 			bool inBlock = false;
 			bool escapeNextChar = false;
@@ -225,6 +282,10 @@ namespace GCSE_consoleapp.Browser
 			return blocks.ToArray ();
 		}
 
+		/// <summary>
+		/// Double-check if the user really wants to exit.
+		/// </summary>
+		/// <returns>A <see cref="bool"/> representing whether or not the user confirmed the exit request.</returns>
 		private bool confirmExit ()
 		{
 			console.WriteLine ("{0:1}Are you sure you want to exit the program? (Y/N)", ConsoleColor.Cyan, ConsoleColor.Red);
