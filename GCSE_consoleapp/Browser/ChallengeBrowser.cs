@@ -40,7 +40,17 @@ namespace GCSE_consoleapp.Browser
 		/// <summary>
 		/// The <see cref="StringComparison"/> to use when processing user input.
 		/// </summary>
-		private readonly StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
+		private static readonly StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
+
+		/// <summary>
+		/// The default foreground colour to use for printed text.
+		/// </summary>
+		private static readonly ConsoleColor FOREGROUND_COLOUR = ConsoleColor.White;
+
+		/// <summary>
+		/// The default background colour to use for printed text.
+		/// </summary>
+		private static readonly ConsoleColor BACKGROUND_COLOUR = ConsoleColor.Black;
 
 		/// <summary>
 		/// Commands to exit the browser.
@@ -90,7 +100,7 @@ namespace GCSE_consoleapp.Browser
 	#pragma warning disable IDE1006 // Naming Styles, Entry point Main function must have this exact signature
 		public static void Main (string [] args)
 		{
-			new ChallengeBrowser (new ColourConsole ()).startBrowsing ();
+			new ChallengeBrowser (new ColourConsole (FOREGROUND_COLOUR, BACKGROUND_COLOUR)).startBrowsing ();
 		}
 	#pragma warning restore IDE1006 // Naming Styles
 
