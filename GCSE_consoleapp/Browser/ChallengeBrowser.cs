@@ -26,32 +26,7 @@ namespace GCSE_consoleapp.Browser
 		/// The <see cref="char"/> to escape the next <see cref="char"/> in an argument.
 		/// </summary>
 		private const char INPUT_ESCAPE_CHAR = '\\';
-
-		/// <summary>
-		/// The <see cref="string"/> to display whenever user input is polled.
-		/// </summary>
-		private readonly string DEFAULT_INPUT_PROMPT = "> ";
-
-		/// <summary>
-		/// The time, in milliseconds, before the program automatically closes after exiting.
-		/// </summary>
-		private readonly int AUTOEXIT_MILLIS = 5000;
-
-		/// <summary>
-		/// The <see cref="StringComparison"/> to use when processing user input.
-		/// </summary>
-		private static readonly StringComparison COMPARISON_OPTIONS = StringComparison.OrdinalIgnoreCase;
-
-		/// <summary>
-		/// The default foreground colour to use for printed text.
-		/// </summary>
-		private static readonly ConsoleColor FOREGROUND_COLOUR = ConsoleColor.White;
-
-		/// <summary>
-		/// The default background colour to use for printed text.
-		/// </summary>
-		private static readonly ConsoleColor BACKGROUND_COLOUR = ConsoleColor.Black;
-
+		
 		/// <summary>
 		/// Commands to exit the browser.
 		/// </summary>
@@ -83,33 +58,25 @@ namespace GCSE_consoleapp.Browser
 			"challenges",
 		};
 
-		/// <summary>
-		/// <see cref="ColourConsole"/> to use for polling input and writing text.
-		/// </summary>
-		private ColourConsole console;
+		private ColourConsole console { get; }
+		private string inputPrompt { get; }
 
 		/// <summary>
 		/// Creates a new <see cref="ChallengeBrowser"/> with the specified <see cref="ColourConsole"/>.
 		/// </summary>
 		/// <param name="console">The <see cref="ColourConsole"/> to use.</param>
-		public ChallengeBrowser (ColourConsole console)
+		public ChallengeBrowser (ColourConsole console, string inputPrompt)
 		{
 			this.console = console;
+			this.inputPrompt = inputPrompt;
 		}
-
-	#pragma warning disable IDE1006 // Naming Styles, Entry point Main function must have this exact signature
-		public static void Main (string [] args)
-		{
-			new ChallengeBrowser (new ColourConsole (FOREGROUND_COLOUR, BACKGROUND_COLOUR)).startBrowsing ();
-		}
-	#pragma warning restore IDE1006 // Naming Styles
 
 		/// <summary>
 		/// Begin interacting with the user.
 		/// </summary>
 		public void startBrowsing ()
 		{
-			handleHelpCommand (this, new PostConsoleInputEventArgs (console, ""));
+			handleHelpCommand (this, new PostConsoleInputEventArgs (console, null));
 
 			ConsoleInputListener listener = new ConsoleInputListener (console);
 
@@ -118,16 +85,7 @@ namespace GCSE_consoleapp.Browser
 
 			listener.startListening ();
 
-			console.WriteLine ($"{{0:1}}Program finished. Press any key to quit, or wait {{2:1}}{AUTOEXIT_MILLIS / 1000}{{0:1}} seconds for the program to automatically exit. ", ConsoleColor.Black, ConsoleColor.White, ConsoleColor.DarkMagenta);
-
-			Task.Delay (AUTOEXIT_MILLIS).ContinueWith (_ =>
-			{
-				console.WriteLine ("{0:1}Time expired. Automatically closing program.", ConsoleColor.Black, ConsoleColor.White);
-				Environment.Exit (0);
-			});
-
-			console.ReadKey (true);
-			console.WriteLine ("{0:1}Closing program.", ConsoleColor.Black, ConsoleColor.White);
+			
 		}
 
 		/// <summary>
@@ -137,7 +95,7 @@ namespace GCSE_consoleapp.Browser
 		/// <param name="e">The event args.</param>
 		private void handlePreInputEvent (object sender, PreConsoleInputEventArgs e)
 		{
-			e.consoleUsed.Write (DEFAULT_INPUT_PROMPT);
+			e.consoleUsed.Write (inputPrompt);
 		}
 
 		/// <summary>
@@ -150,11 +108,11 @@ namespace GCSE_consoleapp.Browser
 			string input = e.consoleInput;
 			if (string.IsNullOrWhiteSpace (input))
 				e.consoleUsed.WriteLine ();
-			else if (HELPCOMMANDS.contains (input, COMPARISON_OPTIONS))
+			else if (HELPCOMMANDS.contains (input, StringComparison.OrdinalIgnoreCase))
 				handleHelpCommand (sender, e);
-			else if (INFOCOMMANDS.contains (input, COMPARISON_OPTIONS))
+			else if (INFOCOMMANDS.contains (input, StringComparison.OrdinalIgnoreCase))
 				handleInfoCommand (sender, e);
-			else if (EXITCOMMANDS.contains (input, COMPARISON_OPTIONS))
+			else if (EXITCOMMANDS.contains (input, StringComparison.OrdinalIgnoreCase))
 				handleExitCommand (sender, e);
 			else
 				handleProxyCommand (sender, e);
@@ -322,10 +280,10 @@ namespace GCSE_consoleapp.Browser
 		private bool confirmExit ()
 		{
 			console.WriteLine ("{0:1}Are you sure you want to exit the program? (Y/N)", ConsoleColor.Cyan, ConsoleColor.Red);
-			console.Write (DEFAULT_INPUT_PROMPT);
+			console.Write (inputPrompt);
 			string confirmation = console.ReadKey ().Key.ToString ();
 			console.WriteLine ();
-			return confirmation.Equals ("y", COMPARISON_OPTIONS);
+			return confirmation.Equals ("y", StringComparison.OrdinalIgnoreCase);
 		}
 	}
 }

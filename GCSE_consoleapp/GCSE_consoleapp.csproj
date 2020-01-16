@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Browser\ChallengeBrowser.cs" />
+    <Compile Include="Browser\ConsoleApp.cs" />
     <Compile Include="ChallengeProxies\1-FactorialFinder\FactorialFinderProxy.cs" />
     <Compile Include="ChallengeProxies\ChallengeIndex.cs" />
     <Compile Include="ChallengeProxies\ChallengeProxy.cs" />
