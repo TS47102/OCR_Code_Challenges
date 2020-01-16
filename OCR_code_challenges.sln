@@ -18,6 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450E29F3-9990-4F78-9F3B-D85803617B22}"
 	ProjectSection(SolutionItems) = preProject
 		OCR_code_challenges_1-80.pdf = OCR_code_challenges_1-80.pdf
+		Pixelstorm.ruleset = Pixelstorm.ruleset
 		README.md = README.md
 	EndProjectSection
 EndProject
