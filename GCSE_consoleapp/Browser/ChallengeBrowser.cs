@@ -218,7 +218,7 @@ namespace GCSE_consoleapp.Browser
 		/// </summary>
 		/// <param name="rawArgs">The <see cref="string"/> to parse into an array of arguments.</param>
 		/// <returns>An array of the arguments in <paramref name="rawArgs"/>.</returns>
-		private string [] parseArgs (string rawArgs)
+		private static string [] parseArgs (string rawArgs)
 		{
 			List<string> blocks = new List<string> ();
 
