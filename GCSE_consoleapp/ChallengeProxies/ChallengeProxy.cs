@@ -32,7 +32,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 		private bool validateName (string name)
 		{
 			foreach (string s in VALIDNAMES)
-				if (name.Equals (s, StringComparison.InvariantCultureIgnoreCase))
+				if (name.Equals (s, StringComparison.OrdinalIgnoreCase))
 					return true;
 			return false;
 		}
