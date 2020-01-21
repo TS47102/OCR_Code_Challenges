@@ -10,14 +10,16 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 		public const string CHALLENGEPROXY_QUALIFIEDNAME_CLASSNAME = "_{0:d}_{1}.{1}";
 		public const string CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX = "Proxy";
 
-		public static readonly ImmutableDictionary<ChallengeIndex, ChallengeIndex> challengeProxyAliases;
+		// The ImmutableDictionary, unlike the normal Dictionary, is immutable - so suppressing CA2104 here is fine.
+		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+		public static readonly ImmutableDictionary<ChallengeIndex, ChallengeIndex> challengeProxyAliases = initChallengeProxyAliases ();
 
-		static ChallengeProxyFactory ()
+		private static ImmutableDictionary<ChallengeIndex, ChallengeIndex> initChallengeProxyAliases ()
 		{
 			ImmutableDictionary<ChallengeIndex, ChallengeIndex>.Builder builder = ImmutableDictionary.CreateBuilder<ChallengeIndex, ChallengeIndex> ();
 			builder.Add (ChallengeIndex.FindTheFactorial, ChallengeIndex.FactorialFinder);
 			builder.Add (ChallengeIndex.HappyNumbers2, ChallengeIndex.HappyNumbers);
-			challengeProxyAliases = builder.ToImmutable ();
+			return builder.ToImmutable ();
 		}
 		
 		public static string getQualifiedChallengeProxyName (int challengeIndex, string challengeName)
