@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Globalization;
 
 namespace GCSE_ConsoleApp.ChallengeProxies
 {
@@ -21,7 +22,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 		
 		public static string getQualifiedChallengeProxyName (int challengeIndex, string challengeName)
 		{
-			return CHALLENGEPROXY_QUALIFIEDNAME_NAMESPACE + string.Format (CHALLENGEPROXY_QUALIFIEDNAME_CLASSNAME, challengeIndex, challengeName) + CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX;
+			return CHALLENGEPROXY_QUALIFIEDNAME_NAMESPACE + string.Format (CultureInfo.InvariantCulture, CHALLENGEPROXY_QUALIFIEDNAME_CLASSNAME, challengeIndex, challengeName) + CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX;
 		}
 
 		public static string getQualifiedChallengeProxyName (ChallengeIndex challengeIndex)
@@ -29,6 +30,9 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			return getQualifiedChallengeProxyName ((int) challengeIndex, challengeIndex.ToString ());
 		}
 
+		// The exception message will be displayed to the user if it gets thrown, so the Current Culture must be used. String interpolation defaults to the Current Culture, so suppressing this is fine,
+		// as there is no way to explicitly (redundantly) specify the Current Culture for string interpolation.
+		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object)")]
 		public static ChallengeProxy getProxy (ChallengeIndex challengeIndex)
 		{
 			if (Enum.IsDefined (typeof(ChallengeIndex), challengeIndex)
