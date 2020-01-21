@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using ChallengeLibrary.Reflection;
 
 namespace ChallengeLibrary.Challenges
 {
@@ -14,7 +15,7 @@ namespace ChallengeLibrary.Challenges
 	/// randomised number plates and times. You will then use the code you’ve already written to process this list to determine who is breaking the speed limit (70mph) and who has
 	/// invalid number plates.
 	/// </summary>
-	public static class SpeedTracker
+	public class SpeedTracker : IChallenge
 	{
 		public const double CAMERA_DISTANCE_MILES = 1;
 		public const double SPEEDLIMIT_MPH = 70;
@@ -65,6 +66,11 @@ namespace ChallengeLibrary.Challenges
 						writer.WriteLine (offence.ToString () + RECORD_FIELD_SEPARATOR + speed + RECORD_FIELD_SEPARATOR + details [1]);
 				}
 			}
+		}
+
+		public void processInput (string [] args)
+		{
+			throw new NotImplementedException ("TODO: Implement");
 		}
 
 		public enum OffenceType
