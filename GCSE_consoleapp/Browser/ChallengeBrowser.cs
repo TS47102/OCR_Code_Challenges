@@ -180,13 +180,14 @@ namespace GCSE_ConsoleApp.Browser
 		/// <param name="e">The event args.</param>
 		private void confirmExit (PostConsoleInputEventArgs e)
 		{
-			if (confirmExit (e.consoleUsed as ColourConsole))
+			ColourConsole colourConsole = e.consoleUsed as ColourConsole;
+			if (confirmExit (colourConsole))
 			{
-				e.consoleUsed.WriteLine ("{0:1}Requesting to exit program...", ConsoleColor.Cyan, ConsoleColor.Red);
+				colourConsole.WriteLine ("{0:1}Requesting to exit program...", ConsoleColor.Cyan, ConsoleColor.Red);
 				e.cancelRequested = true;
 			}
 			else
-				e.consoleUsed.WriteLine ("{0:1}Aborted program exit.", ConsoleColor.Cyan, ConsoleColor.Red);
+				colourConsole.WriteLine ("{0:1}Aborted program exit.", ConsoleColor.Cyan, ConsoleColor.Red);
 		}
 
 		/// <summary>
