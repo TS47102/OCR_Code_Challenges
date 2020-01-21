@@ -6,7 +6,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 {
 	public static class ChallengeProxyFactory
 	{
-		public const string CHALLENGEPROXY_QUALIFIEDNAME_NAMESPACE = "GCSE_consoleapp.ChallengeProxies.";
+		public const string CHALLENGEPROXY_QUALIFIEDNAME_NAMESPACE = "GCSE_ConsoleApp.ChallengeProxies.";
 		public const string CHALLENGEPROXY_QUALIFIEDNAME_CLASSNAME = "_{0:d}_{1}.{1}";
 		public const string CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX = "Proxy";
 
