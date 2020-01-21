@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChallengeLibrary.Challenges._1_FactorialFinder
+namespace ChallengeLibrary.Challenges
 {
 	/// <summary>
 	/// #1 - 'FactorialFinder'
@@ -47,7 +47,7 @@ namespace ChallengeLibrary.Challenges._1_FactorialFinder
 
 			return factorialFind_recursive (number, 1);
 		}
-		
+
 		private static long factorialFind_recursive (int number, long accumulator)
 		{
 			if (accumulator == 0)

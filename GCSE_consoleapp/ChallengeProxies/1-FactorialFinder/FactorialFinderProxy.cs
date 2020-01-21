@@ -1,5 +1,5 @@
 ﻿using System;
-using ChallengeLibrary.Challenges._1_FactorialFinder;
+using ChallengeLibrary.Challenges;
 
 namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 {

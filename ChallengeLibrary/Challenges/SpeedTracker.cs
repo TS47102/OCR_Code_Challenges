@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace ChallengeLibrary.Challenges._2_SpeedTracker
+namespace ChallengeLibrary.Challenges
 {
 	/// <summary>
 	/// Create a program that takes a time for a car going past a speed camera, the time going past the next one and the distance between them to calculate the average speed for the car
@@ -37,7 +37,7 @@ namespace ChallengeLibrary.Challenges._2_SpeedTracker
 			if (!File.Exists (inputFilePath))
 				throw new FileNotFoundException ($"File {inputFilePath} does not exist.");
 
-			createOffendersFile (inputFilePath, OUTPUTFOLDER_PATH + Regex.Match(inputFilePath, @".+\\{1}(.+)\.{1}.+$").Value + "_offenders." + OUTPUTFILE_EXTENSION);
+			createOffendersFile (inputFilePath, OUTPUTFOLDER_PATH + Regex.Match (inputFilePath, @".+\\{1}(.+)\.{1}.+$").Value + "_offenders." + OUTPUTFILE_EXTENSION);
 		}
 
 		public static void createOffendersFile (string inputFilePath, string outputFilePath)
@@ -46,23 +46,23 @@ namespace ChallengeLibrary.Challenges._2_SpeedTracker
 			{
 				foreach (string line in File.ReadLines (inputFilePath))
 				{
-					string[] details = line.Split (RECORD_FIELD_SEPARATOR);
+					string [] details = line.Split (RECORD_FIELD_SEPARATOR);
 					if (details.Length != 2)
-						throw new IOException($"Line '{line}' in file '{inputFilePath}' has malformed format. (Incorrect number of fields)");
+						throw new IOException ($"Line '{line}' in file '{inputFilePath}' has malformed format. (Incorrect number of fields)");
 
-					if (!double.TryParse (details[0], out double speed))
-						throw new IOException($"Line '{line}' in file '{inputFilePath}' has malformed format. (Speed was not a number)");
+					if (!double.TryParse (details [0], out double speed))
+						throw new IOException ($"Line '{line}' in file '{inputFilePath}' has malformed format. (Speed was not a number)");
 
 					OffenceType offence = OffenceType.none;
 
 					if (speed > SPEEDLIMIT_MPH)
 						offence = OffenceType.speeding;
 
-					if (!validNumberPlate (details[1]))
+					if (!validNumberPlate (details [1]))
 						offence = offence == OffenceType.speeding ? OffenceType.both : OffenceType.badNumberPlate;
 
 					if (offence != OffenceType.none)
-						writer.WriteLine (offence.ToString() + RECORD_FIELD_SEPARATOR + speed + RECORD_FIELD_SEPARATOR + details[1]);
+						writer.WriteLine (offence.ToString () + RECORD_FIELD_SEPARATOR + speed + RECORD_FIELD_SEPARATOR + details [1]);
 				}
 			}
 		}

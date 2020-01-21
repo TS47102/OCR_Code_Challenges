@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Challenges\1-FactorialFinder\FactorialFinder.cs" />
-    <Compile Include="Challenges\2-SpeedTracker\SpeedTracker.cs" />
+    <Compile Include="Challenges\FactorialFinder.cs" />
+    <Compile Include="Challenges\SpeedTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
