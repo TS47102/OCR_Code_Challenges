@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Immutable;
 
 namespace GCSE_ConsoleApp.ChallengeProxies
 {
@@ -8,11 +9,15 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 		public const string CHALLENGEPROXY_QUALIFIEDNAME_CLASSNAME = "_{0:d}_{1}.{1}";
 		public const string CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX = "Proxy";
 
-		public static readonly System.Collections.Generic.Dictionary<ChallengeIndex, ChallengeIndex> CHALLENGEPROXY_ALIASES = new System.Collections.Generic.Dictionary<ChallengeIndex, ChallengeIndex> (2)
+		public static readonly ImmutableDictionary<ChallengeIndex, ChallengeIndex> challengeProxyAliases;
+
+		static ChallengeProxyFactory ()
 		{
-			{ ChallengeIndex.FindTheFactorial, ChallengeIndex.FactorialFinder },
-			{ ChallengeIndex.HappyNumbers2, ChallengeIndex.HappyNumbers }
-		};
+			ImmutableDictionary<ChallengeIndex, ChallengeIndex>.Builder builder = ImmutableDictionary.CreateBuilder<ChallengeIndex, ChallengeIndex> ();
+			builder.Add (ChallengeIndex.FindTheFactorial, ChallengeIndex.FactorialFinder);
+			builder.Add (ChallengeIndex.HappyNumbers2, ChallengeIndex.HappyNumbers);
+			challengeProxyAliases = builder.ToImmutable ();
+		}
 		
 		public static string getQualifiedChallengeProxyName (int challengeIndex, string challengeName)
 		{
@@ -29,8 +34,8 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			if (Enum.IsDefined (typeof(ChallengeIndex), challengeIndex)
 				&& challengeIndex != ChallengeIndex.Invalid)
 			{
-				if (CHALLENGEPROXY_ALIASES.ContainsKey (challengeIndex))
-					challengeIndex = CHALLENGEPROXY_ALIASES[challengeIndex];
+				if (challengeProxyAliases.ContainsKey (challengeIndex))
+					challengeIndex = challengeProxyAliases[challengeIndex];
 
 				string qualifiedClassName = getQualifiedChallengeProxyName (challengeIndex);
 
