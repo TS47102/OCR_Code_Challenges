@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using ChallengeLibrary.Challenges;
+using ChallengeLibrary.Reflection;
 using GCSE_ConsoleApp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
@@ -201,17 +203,13 @@ namespace GCSE_ConsoleApp.Browser
 
 			string [] args = parseArgs (e.consoleInput);
 
-			ChallengeProxy proxy = null;
+			IConsoleChallenge challenge = null;
 
-			try
-			{ proxy = ChallengeProxyFactory.getProxy (args [0]); }
-			catch (SystemException ex) when (ex is ArgumentException || ex is InvalidCastException || ex is NullReferenceException)
-			{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+			try { challenge = ChallengeReflector.createChallenge (args [0]); }
+			catch (ArgumentException ex) { e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 
-			try
-			{ proxy.execute (args); }
-			catch (Exception ex)
-			{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+			try { challenge?.execute (args); }
+			catch (ChallengeException ex) { e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 
 		/// <summary>
