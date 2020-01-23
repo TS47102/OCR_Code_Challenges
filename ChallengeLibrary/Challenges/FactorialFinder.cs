@@ -11,7 +11,7 @@ namespace ChallengeLibrary.Challenges
 	/// <remarks>
 	/// Challenge number #45 - 'Find the factorial' is a duplicate of this challenge.
 	/// </remarks>
-	public class FactorialFinder : IChallenge
+	public class FactorialFinder : IConsoleChallenge
 	{
 		/// <summary>
 		/// Calculates the factorial of <paramref name="number"/> iteratively.
@@ -57,7 +57,7 @@ namespace ChallengeLibrary.Challenges
 			return number == 0 ? accumulator : factorialFind_recursive (number - 1, checked (number * accumulator));
 		}
 
-		public void processInput (string [] args)
+		public void execute (string [] args)
 		{
 			throw new NotImplementedException ("TODO: Implement");
 		}

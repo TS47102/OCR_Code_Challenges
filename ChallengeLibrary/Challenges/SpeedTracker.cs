@@ -15,7 +15,7 @@ namespace ChallengeLibrary.Challenges
 	/// randomised number plates and times. You will then use the code you’ve already written to process this list to determine who is breaking the speed limit (70mph) and who has
 	/// invalid number plates.
 	/// </summary>
-	public class SpeedTracker : IChallenge
+	public class SpeedTracker : IConsoleChallenge
 	{
 		public const double CAMERA_DISTANCE_MILES = 1;
 		public const double SPEEDLIMIT_MPH = 70;
@@ -68,7 +68,7 @@ namespace ChallengeLibrary.Challenges
 			}
 		}
 
-		public void processInput (string [] args)
+		public void execute (string [] args)
 		{
 			throw new NotImplementedException ("TODO: Implement");
 		}

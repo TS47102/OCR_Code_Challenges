@@ -50,7 +50,7 @@
     <Compile Include="Challenges\SpeedTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\ChallengeReflector.cs" />
-    <Compile Include="Reflection\IChallenge.cs" />
+    <Compile Include="Reflection\IConsoleChallenge.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
