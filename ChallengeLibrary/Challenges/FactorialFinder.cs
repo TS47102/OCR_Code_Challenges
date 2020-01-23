@@ -59,7 +59,16 @@ namespace ChallengeLibrary.Challenges
 
 		public void execute (string [] args)
 		{
-			throw new NotImplementedException ("TODO: Implement");
+			if (args.Length < 2)
+				throw new ChallengeException ("Not enough arguments.");
+			if (int.TryParse (args [1], out int i))
+			{
+				try { Console.WriteLine (factorialFind_iterative (i)); }
+				catch (OverflowException e) { throw new ChallengeException ($"The factorial of {i} is greater than {int.MaxValue}, and caused an integer overflow.", e); }
+				catch (ArgumentOutOfRangeException e) { throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
+			}
+			else
+				throw new ChallengeException ($"'{i}' is not a valid integer.");
 		}
 	}
 }
