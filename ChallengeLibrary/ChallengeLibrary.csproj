@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Challenges\ChallengeException.cs" />
     <Compile Include="Challenges\FactorialFinder.cs" />
     <Compile Include="Challenges\SpeedTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
