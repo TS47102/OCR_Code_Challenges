@@ -57,8 +57,13 @@ namespace ChallengeLibrary.Challenges
 			return number == 0 ? accumulator : factorialFind_recursive (number - 1, checked (number * accumulator));
 		}
 
+		// Suppressing CA1305 here is fine as string interpolation defaults to the Current Culture.
+		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object)")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object)")]
 		public void execute (string [] args)
 		{
+			if (args == null)
+				throw new ArgumentNullException (nameof (args), "Cannot execute on null arguments.");
 			if (args.Length < 2)
 				throw new ChallengeException ("Not enough arguments.");
 			if (int.TryParse (args [1], out int i))
