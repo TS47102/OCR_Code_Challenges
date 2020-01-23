@@ -23,7 +23,7 @@ namespace ChallengeLibrary.Challenges
 
 		}
 
-		public ChallengeException (string message, Exception inner) : base (message, inner)
+		public ChallengeException (string message, Exception innerException) : base (message, innerException)
 		{
 
 		}
