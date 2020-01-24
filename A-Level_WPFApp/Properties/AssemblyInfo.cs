@@ -14,7 +14,6 @@ using System.Windows;
 [assembly: AssemblyCompany ("Pixelstorm")]
 [assembly: AssemblyProduct("A-Level_WPFApp")]
 [assembly: AssemblyCopyright ("Copyright © Pixelstorm 2020")]
-[assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
 #if DEBUG
