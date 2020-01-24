@@ -14,7 +14,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Pixelstorm")]
 [assembly: AssemblyProduct("A-Level_WPFApp")]
-[assembly: AssemblyCopyright ("Copyright © Pixelstorm 2019")]
+[assembly: AssemblyCopyright ("Copyright © Pixelstorm 2020")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 

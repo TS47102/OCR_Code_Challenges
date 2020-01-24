@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Pixelstorm")]
 [assembly: AssemblyProduct ("GCSE_ConsoleApp")]
-[assembly: AssemblyCopyright ("Copyright © Pixelstorm 2019")]
+[assembly: AssemblyCopyright ("Copyright © Pixelstorm 2020")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
