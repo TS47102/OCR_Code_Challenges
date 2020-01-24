@@ -11,12 +11,17 @@ using System.Windows;
 // associated with an assembly.
 [assembly: AssemblyTitle ("A-Level_WPFApp")]
 [assembly: AssemblyDescription ("A-level GUI response to OCR Coding Challenges")]
-[assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Pixelstorm")]
 [assembly: AssemblyProduct("A-Level_WPFApp")]
 [assembly: AssemblyCopyright ("Copyright © Pixelstorm 2020")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
+
+#if DEBUG
+[assembly: AssemblyConfiguration ("Debug")]
+#else
+[assembly: AssemblyConfiguration ("Release")]
+#endif
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

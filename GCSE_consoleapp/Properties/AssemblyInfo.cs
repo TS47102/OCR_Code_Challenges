@@ -10,12 +10,17 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle ("GCSE_ConsoleApp")]
 [assembly: AssemblyDescription ("GCSE-level Command-line response to OCR Coding Challenges")]
-[assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Pixelstorm")]
 [assembly: AssemblyProduct ("GCSE_ConsoleApp")]
 [assembly: AssemblyCopyright ("Copyright © Pixelstorm 2020")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
+
+#if DEBUG
+[assembly: AssemblyConfiguration ("Debug")]
+#else
+[assembly: AssemblyConfiguration ("Release")]
+#endif
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
