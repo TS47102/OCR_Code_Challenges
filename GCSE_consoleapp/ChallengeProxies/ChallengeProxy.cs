@@ -42,7 +42,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			if (args == null)
 				throw new ArgumentNullException (nameof (args), "Cannot execute using null args.");
 
-			if (args.Length > 1 && (args [1].Equals ("-d") || args [1].Equals ("--description")))
+			if (args.Length > 1 && (args [1].Equals ("-d", StringComparison.OrdinalIgnoreCase) || args [1].Equals ("--description", StringComparison.OrdinalIgnoreCase)))
 			{
 				printDescription ();
 				return false;
