@@ -5,15 +5,16 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450E29F3-9990-4F78-9F3B-D85803617B22}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		OCR_code_challenges_1-80.pdf = OCR_code_challenges_1-80.pdf
 		Pixelstorm.ruleset = Pixelstorm.ruleset
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelLib", "lib\PixelLib\PixelLib\PixelLib.csproj", "{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PixelLib", "lib\PixelLib\PixelLib\PixelLib.csproj", "{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCSE_ConsoleApp", "GCSE_ConsoleApp\GCSE_ConsoleApp.csproj", "{CE7FA967-55CE-4965-8C07-68FCD39CB70A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GCSE_ConsoleApp", "GCSE_ConsoleApp\GCSE_ConsoleApp.csproj", "{CE7FA967-55CE-4965-8C07-68FCD39CB70A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeLibrary", "ChallengeLibrary\ChallengeLibrary.csproj", "{CFF77FF6-A182-4A5B-97D0-50E27E601C53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeLibrary", "ChallengeLibrary\ChallengeLibrary.csproj", "{CFF77FF6-A182-4A5B-97D0-50E27E601C53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
