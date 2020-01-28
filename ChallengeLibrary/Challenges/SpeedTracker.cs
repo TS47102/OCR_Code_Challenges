@@ -41,6 +41,7 @@ namespace ChallengeLibrary.Challenges
 			createOffendersFile (inputFilePath, OUTPUTFOLDER_PATH + Regex.Match (inputFilePath, @".+\\{1}(.+)\.{1}.+$").Value + "_offenders." + OUTPUTFILE_EXTENSION);
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Style", "IDE0063:Use simple 'using' statement", Justification = "Keep brackets on single statement blocks if the single statement is in itself a statement block.")]
 		public static void createOffendersFile (string inputFilePath, string outputFilePath)
 		{
 			using (StreamWriter writer = File.CreateText (outputFilePath))
