@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A-Level_WPFApp", "A-Level_WPFApp\A-Level_WPFApp.csproj", "{FAA9A09E-B03C-453C-9212-C26767079DC5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450E29F3-9990-4F78-9F3B-D85803617B22}"
 	ProjectSection(SolutionItems) = preProject
 		OCR_code_challenges_1-80.pdf = OCR_code_challenges_1-80.pdf
@@ -23,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
