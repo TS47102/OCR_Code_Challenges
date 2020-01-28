@@ -40,7 +40,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 			if (args == null)
 				throw new ArgumentNullException (nameof (args), "Cannot execute with null args.");
 
-			if (int.TryParse (args [args.Length - 1], out int value))
+			if (int.TryParse (args [^1], out int value))
 			{
 				if (args.Length > MINARGS)
 				{
@@ -64,7 +64,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 					Console.WriteLine ($"The iterative factorial of {value} is: {FactorialFinder.factorialFind_iterative (value)}.");
 			}
 			else
-				throw new ArgumentException ($"Last argument must be a valid unsigned int, but was {args [args.Length - 1]} instead.", nameof (args));
+				throw new ArgumentException ($"Last argument must be a valid unsigned int, but was {args [^1]} instead.", nameof (args));
 		}
 	}
 }
