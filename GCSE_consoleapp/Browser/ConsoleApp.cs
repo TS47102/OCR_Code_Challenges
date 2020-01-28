@@ -57,7 +57,7 @@ namespace GCSE_ConsoleApp.Browser
 			{
 				console.WriteLine ("{0:1}Time expired. Automatically exiting program.", ConsoleColor.Black, ConsoleColor.White);
 				Environment.Exit (0);
-			});
+			}, TaskScheduler.Default);
 
 			console.ReadKey (true);
 			console.WriteLine ("{0:1}Exiting program.", ConsoleColor.Black, ConsoleColor.White);
