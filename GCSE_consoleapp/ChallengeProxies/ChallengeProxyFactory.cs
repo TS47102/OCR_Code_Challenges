@@ -21,7 +21,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			builder.Add (ChallengeIndex.HappyNumbers2, ChallengeIndex.HappyNumbers);
 			return builder.ToImmutable ();
 		}
-		
+
 		public static string getQualifiedChallengeProxyName (int challengeIndex, string challengeName)
 		{
 			return CHALLENGEPROXY_QUALIFIEDNAME_NAMESPACE + string.Format (CultureInfo.InvariantCulture, CHALLENGEPROXY_QUALIFIEDNAME_CLASSNAME, challengeIndex, challengeName) + CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX;
@@ -37,11 +37,11 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object)")]
 		public static ChallengeProxy getProxy (ChallengeIndex challengeIndex)
 		{
-			if (Enum.IsDefined (typeof(ChallengeIndex), challengeIndex)
+			if (Enum.IsDefined (typeof (ChallengeIndex), challengeIndex)
 				&& challengeIndex != ChallengeIndex.Invalid)
 			{
 				if (challengeProxyAliases.ContainsKey (challengeIndex))
-					challengeIndex = challengeProxyAliases[challengeIndex];
+					challengeIndex = challengeProxyAliases [challengeIndex];
 
 				string qualifiedClassName = getQualifiedChallengeProxyName (challengeIndex);
 
@@ -51,7 +51,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 				{
 					if (proxyInstance.proxiedChallenge != challengeIndex)
 						throw new ArgumentException ($"Attempted to create an invalid ChallengeProxy object: '{qualifiedClassName}'. ({nameof (ChallengeIndex)} value did not match with class '{nameof (proxyInstance.proxiedChallenge)}'.)", nameof (challengeIndex));
-					
+
 					return proxyInstance;
 				}
 				else

@@ -5,7 +5,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 {
 	public class FactorialFinderProxy : ChallengeProxy
 	{
-		public override string[] VALIDNAMES => new string[] { proxiedChallenge.ToString(), "FF" };
+		public override string [] VALIDNAMES => new string [] { proxiedChallenge.ToString (), "FF" };
 		public override int MINARGS => 2;
 		public override int MAXARGS => 3;
 
@@ -35,16 +35,16 @@ namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 			Console.WriteLine ("'The Factorial of a positive integer, n, is defined as the product of the sequence n, n-1, n-2, ...1 and the factorial of zero, 0, is defined as being 1. Solve this using both loops and recursion.'");
 		}
 
-		protected override void do_execute (string[] args)
+		protected override void do_execute (string [] args)
 		{
 			if (args == null)
 				throw new ArgumentNullException (nameof (args), "Cannot execute with null args.");
 
-			if (int.TryParse (args[args.Length - 1], out int value))
+			if (int.TryParse (args [args.Length - 1], out int value))
 			{
 				if (args.Length > MINARGS)
 				{
-					switch (args[MINARGS - 1])
+					switch (args [MINARGS - 1])
 					{
 						case "-r":
 						case "--recursive":
@@ -57,14 +57,14 @@ namespace GCSE_ConsoleApp.ChallengeProxies._1_FactorialFinder
 							break;
 
 						default:
-							throw new ArgumentException ($"Argument number {MINARGS - 1} must be one of: [-i|--iterative|-r|--recursive], but was {args[MINARGS - 1]} instead.", nameof(args));
+							throw new ArgumentException ($"Argument number {MINARGS - 1} must be one of: [-i|--iterative|-r|--recursive], but was {args [MINARGS - 1]} instead.", nameof (args));
 					}
 				}
 				else
 					Console.WriteLine ($"The iterative factorial of {value} is: {FactorialFinder.factorialFind_iterative (value)}.");
 			}
 			else
-				throw new ArgumentException ($"Last argument must be a valid unsigned int, but was {args[args.Length - 1]} instead.", nameof(args));
+				throw new ArgumentException ($"Last argument must be a valid unsigned int, but was {args [args.Length - 1]} instead.", nameof (args));
 		}
 	}
 }

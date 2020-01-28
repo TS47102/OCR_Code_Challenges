@@ -28,7 +28,7 @@ namespace GCSE_ConsoleApp.Browser
 		/// The <see cref="char"/> to escape the next <see cref="char"/> in an argument.
 		/// </summary>
 		private const char INPUT_ESCAPE_CHAR = '\\';
-		
+
 		/// <summary>
 		/// Commands to exit the browser.
 		/// </summary>
@@ -59,7 +59,7 @@ namespace GCSE_ConsoleApp.Browser
 			"--list",
 			"challenges",
 		};
-		
+
 		/// <summary>
 		/// The <see cref="string"/> to display just before polling for user input.
 		/// </summary>
@@ -205,10 +205,12 @@ namespace GCSE_ConsoleApp.Browser
 
 			IConsoleChallenge challenge = null;
 
-			try { challenge = ChallengeReflector.createChallenge (args [0]); }
+			try
+			{ challenge = ChallengeReflector.createChallenge (args [0]); }
 			catch (ArgumentException ex) { e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 
-			try { challenge?.execute (args); }
+			try
+			{ challenge?.execute (args); }
 			catch (ChallengeException ex) { e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 

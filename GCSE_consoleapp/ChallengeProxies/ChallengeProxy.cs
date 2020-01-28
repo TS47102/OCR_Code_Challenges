@@ -8,7 +8,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			Enum.Parse (typeof (ChallengeIndex), GetType ().Name.Substring (0, GetType ().Name.Length - ChallengeProxyFactory.CHALLENGEPROXY_QUALIFIEDNAME_SUFFIX.Length));
 
 #pragma warning disable IDE1006 // Naming Styles, readonly properties are essentially constants, and Visual Studio doesn't allow for custom naming styles for readonly properties.
-		public virtual string[] VALIDNAMES => new string[] { proxiedChallenge.ToString () };
+		public virtual string [] VALIDNAMES => new string [] { proxiedChallenge.ToString () };
 		public virtual int MAXARGS => -1;
 
 		public abstract int MINARGS { get; }
@@ -25,7 +25,7 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 		/// and that the second value of <paramref name="args"/> (That at index 1) is not one of '-d' or '--description'.
 		/// </summary>
 		/// <param name="args"></param>
-		protected abstract void do_execute (string[] args);
+		protected abstract void do_execute (string [] args);
 
 		internal ChallengeProxy () { }
 
@@ -37,9 +37,9 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			return false;
 		}
 
-		private bool doCommonPreexecChecks (string[] args)
+		private bool doCommonPreexecChecks (string [] args)
 		{
-			if (args.Length > 1 && (args[1].Equals ("-d") || args[1].Equals ("--description")))
+			if (args.Length > 1 && (args [1].Equals ("-d") || args [1].Equals ("--description")))
 			{
 				printDescription ();
 				return false;
@@ -51,13 +51,13 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 			if (MAXARGS > 0 && args.Length > MAXARGS)
 				throw new ArgumentException ($"Number of arguments must be at most {MAXARGS}, but {args.Length} were given.", nameof (args));
 
-			if (args.Length > 0 && !validateName (args[0]))
+			if (args.Length > 0 && !validateName (args [0]))
 				throw new ArgumentException ("Arguments must start with a valid challenge identifier.", nameof (args));
 
 			return true;
 		}
 
-		public void execute (string[] args)
+		public void execute (string [] args)
 		{
 			if (doCommonPreexecChecks (args))
 				do_execute (args);

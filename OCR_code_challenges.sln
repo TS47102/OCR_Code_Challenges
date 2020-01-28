@@ -1,19 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeLibrary", "ChallengeLibrary\ChallengeLibrary.csproj", "{39198C17-F018-4A99-93CD-2E36CF71AD1E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCSE_ConsoleApp", "GCSE_consoleapp\GCSE_ConsoleApp.csproj", "{65FA1814-24AC-4618-AD0C-E0743E8B983F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29} = {AC063F49-84D8-4E76-9016-9EAF8D5E0A29}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A-Level_WPFApp", "A-Level_WPFApp\A-Level_WPFApp.csproj", "{FAA9A09E-B03C-453C-9212-C26767079DC5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{39198C17-F018-4A99-93CD-2E36CF71AD1E} = {39198C17-F018-4A99-93CD-2E36CF71AD1E}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450E29F3-9990-4F78-9F3B-D85803617B22}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,20 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelLib", "lib\PixelLib\PixelLib\PixelLib.csproj", "{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCSE_ConsoleApp", "GCSE_ConsoleApp\GCSE_ConsoleApp.csproj", "{CE7FA967-55CE-4965-8C07-68FCD39CB70A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeLibrary", "ChallengeLibrary\ChallengeLibrary.csproj", "{CFF77FF6-A182-4A5B-97D0-50E27E601C53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{39198C17-F018-4A99-93CD-2E36CF71AD1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39198C17-F018-4A99-93CD-2E36CF71AD1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39198C17-F018-4A99-93CD-2E36CF71AD1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39198C17-F018-4A99-93CD-2E36CF71AD1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65FA1814-24AC-4618-AD0C-E0743E8B983F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65FA1814-24AC-4618-AD0C-E0743E8B983F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65FA1814-24AC-4618-AD0C-E0743E8B983F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65FA1814-24AC-4618-AD0C-E0743E8B983F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA9A09E-B03C-453C-9212-C26767079DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +31,14 @@ Global
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC063F49-84D8-4E76-9016-9EAF8D5E0A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7FA967-55CE-4965-8C07-68FCD39CB70A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7FA967-55CE-4965-8C07-68FCD39CB70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7FA967-55CE-4965-8C07-68FCD39CB70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7FA967-55CE-4965-8C07-68FCD39CB70A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF77FF6-A182-4A5B-97D0-50E27E601C53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF77FF6-A182-4A5B-97D0-50E27E601C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF77FF6-A182-4A5B-97D0-50E27E601C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF77FF6-A182-4A5B-97D0-50E27E601C53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

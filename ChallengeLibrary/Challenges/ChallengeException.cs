@@ -19,7 +19,7 @@ namespace ChallengeLibrary.Challenges
 		{
 
 		}
-		
+
 		public ChallengeException (string message) : base (message)
 		{
 
