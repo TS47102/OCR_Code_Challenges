@@ -39,6 +39,9 @@ namespace GCSE_ConsoleApp.ChallengeProxies
 
 		private bool doCommonPreexecChecks (string [] args)
 		{
+			if (args == null)
+				throw new ArgumentNullException (nameof (args), "Cannot execute using null args.");
+
 			if (args.Length > 1 && (args [1].Equals ("-d") || args [1].Equals ("--description")))
 			{
 				printDescription ();

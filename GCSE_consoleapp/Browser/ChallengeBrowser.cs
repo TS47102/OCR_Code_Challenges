@@ -78,8 +78,12 @@ namespace GCSE_ConsoleApp.Browser
 		/// Begin interacting with the user.
 		/// </summary>
 		/// <param name="console">The <see cref="ColourConsole"/> through which to interact with the user.</param>
+		/// <exception cref="ArgumentNullException">Thrown when <paramref name="console"/> is <see langword="null"/>.</exception>
 		public void startBrowsing (ColourConsole console)
 		{
+			if (console == null)
+				throw new ArgumentNullException (nameof (console), "Cannot start browsing with a null console.");
+
 			displayHelpInformation (console);
 
 			ConsoleInputListener listener = new ConsoleInputListener (console);
