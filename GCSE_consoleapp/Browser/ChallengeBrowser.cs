@@ -176,8 +176,8 @@ namespace GCSE_ConsoleApp.Browser
 		/// <param name="console">The <see cref="ColourConsole"/> to write the information to.</param>
 		private static void displayChallengeInformation (ColourConsole console)
 		{
-			for (ChallengeIndex i = ChallengeIndex.FactorialFinder; i <= ChallengeIndex.HappyHopper; i++)
-				console.WriteLine (string.Format (CultureInfo.CurrentCulture, "{{Yellow:}}{0,-2:d} {{Gray:}}: {{White:}}{1}", (int) i, i.ToString ()));
+			foreach (KeyValuePair<string, Type> challengeType in ChallengeReflector.challengeTypeDictionary)
+				console.WriteLine ("{Yellow:}" + challengeType.Key);
 		}
 
 		/// <summary>
