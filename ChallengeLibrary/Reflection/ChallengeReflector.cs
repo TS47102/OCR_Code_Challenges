@@ -52,10 +52,9 @@ namespace ChallengeLibrary.Reflection
 		{
 			if (assembly == null)
 				throw new ArgumentNullException (nameof (assembly), "Cannot get types from a null reference.");
-			try
-			{ return assembly.GetTypes (); }
+			try { return assembly.GetTypes (); }
 			catch (ReflectionTypeLoadException e)
-			{ return e.Types.Where (t => t != null); }
+				{ return e.Types.Where (t => t != null); }
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace ChallengeLibrary.Challenges
 
 			long product = 1;
 			while (number > 0)
-				product = checked(product * number--);
+				product = checked (product * number--);
 			return product;
 		}
 
@@ -54,7 +54,7 @@ namespace ChallengeLibrary.Challenges
 			if (accumulator == 0)
 				throw new ArgumentOutOfRangeException (nameof (accumulator), accumulator, "Accumulator must not be less than 1.");
 
-			return number == 0 ? accumulator : factorialFind_recursive (number - 1, checked(number * accumulator));
+			return number == 0 ? accumulator : factorialFind_recursive (number - 1, checked (number * accumulator));
 		}
 
 		// Suppressing CA1305 here is fine as string interpolation defaults to the Current Culture.
@@ -68,10 +68,11 @@ namespace ChallengeLibrary.Challenges
 				throw new ChallengeException ("Not enough arguments.");
 			if (int.TryParse (args [1], out int i))
 			{
-				try
-				{ Console.WriteLine (factorialFind_iterative (i)); }
-				catch (OverflowException e) { throw new ChallengeException ($"The factorial of {i} is greater than {int.MaxValue}, and caused an integer overflow.", e); }
-				catch (ArgumentOutOfRangeException e) { throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
+				try { Console.WriteLine (factorialFind_iterative (i)); }
+				catch (OverflowException e)
+					{ throw new ChallengeException ($"The factorial of {i} is greater than {int.MaxValue}, and caused an integer overflow.", e); }
+				catch (ArgumentOutOfRangeException e)
+					{ throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
 			}
 			else
 				throw new ChallengeException ($"'{i}' is not a valid integer.");
