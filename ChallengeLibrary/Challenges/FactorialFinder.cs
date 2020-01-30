@@ -66,7 +66,7 @@ namespace ChallengeLibrary.Challenges
 			if (args == null)
 				throw new ArgumentNullException (nameof (args), "Cannot execute on null arguments.");
 			if (args.Length < 2)
-				throw new ChallengeException ("Not enough arguments.");
+				throw new ChallengeArgumentCountException ("At least 2 arguments are required.", args.Length, 2);
 			if (int.TryParse (args [1], out int i))
 			{
 				try { Console.WriteLine (factorialFind_iterative (i)); }
