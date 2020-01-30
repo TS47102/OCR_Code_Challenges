@@ -34,6 +34,12 @@ namespace ChallengeLibrary.Reflection
 			return result;
 		}
 
+		/// <summary>
+		/// Creates an <see cref="IConsoleChallenge"/> from a <see cref="string"/> identifier.
+		/// </summary>
+		/// <param name="challengeName">The identifier of the <see cref="IConsoleChallenge"/> to be created.</param>
+		/// <returns>The <see cref="IConsoleChallenge"/> that matches <paramref name="challengeName"/>.</returns>
+		/// <exception cref="ArgumentException">Thrown when <paramref name="challengeName"/> is not a valid <see cref="IConsoleChallenge"/> identifier.</exception>
 		public static IConsoleChallenge createChallenge (string challengeName)
 		{
 			if (!challengeTypeDictionary.ContainsKey (challengeName))
