@@ -10,7 +10,7 @@ using PixelLib.ExtensionMethods;
 namespace GCSE_ConsoleApp.Browser
 {
 	/// <summary>
-	/// Allows the user to browse and interact with <see cref="ChallengeProxy"/>s via the command line.
+	/// Allows the user to browse and interact with <see cref="IConsoleChallenge"/>s via the command line.
 	/// </summary>
 	public class ChallengeBrowser
 	{
@@ -171,7 +171,7 @@ namespace GCSE_ConsoleApp.Browser
 		}
 
 		/// <summary>
-		/// List information about <see cref="ChallengeProxy"/>s.
+		/// List information about <see cref="IConsoleChallenge"/>s.
 		/// </summary>
 		/// <param name="console">The <see cref="ColourConsole"/> to write the information to.</param>
 		private static void displayChallengeInformation (ColourConsole console)
