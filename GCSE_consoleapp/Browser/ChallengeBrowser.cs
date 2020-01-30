@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using ChallengeLibrary.Challenges;
+using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Reflection;
 using GCSE_ConsoleApp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;

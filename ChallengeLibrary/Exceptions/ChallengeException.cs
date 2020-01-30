@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace ChallengeLibrary.Challenges
+namespace ChallengeLibrary.Exceptions
 {
 	/// <summary>
 	/// The base class for all handleable exceptions thrown by Challenges.

@@ -1,4 +1,5 @@
 ﻿using System;
+using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Reflection;
 
 namespace ChallengeLibrary.Challenges
