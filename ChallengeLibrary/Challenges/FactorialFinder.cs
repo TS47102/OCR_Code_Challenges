@@ -77,7 +77,7 @@ namespace ChallengeLibrary.Challenges
 			{
 				try { console.WriteLine (factorialFind_iterative (i)); }
 				catch (OverflowException e)
-					{ throw new ChallengeException ($"The factorial of {i} is greater than {long.MaxValue}, and caused an integer overflow.", e); }
+					{ throw new ChallengeException ($"The factorial of {i} is greater than {long.MaxValue}, and caused a long overflow.", e); }
 				catch (ArgumentOutOfRangeException e)
 					{ throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
 			}
