@@ -66,16 +66,32 @@ namespace ChallengeLibrary.Challenges
 		{
 			ChallengeUtils.validateArgs (console, args, 2);
 
-			if (int.TryParse (args [1], out int i))
-			{
-				try { console.WriteLine (factorialFind_iterative (i)); }
-				catch (OverflowException e)
-					{ throw new ChallengeException ($"The factorial of {i} is greater than {long.MaxValue}, and caused a long overflow.", e); }
-				catch (ArgumentOutOfRangeException e)
-					{ throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
-			}
+			if (ChallengeUtils.isHelpCommand (args))
+				printHelp (console);
 			else
-				throw new ChallengeException ($"'{args [1]}' is not a valid integer.");
+			{
+				if (int.TryParse (args [1], out int i))
+				{
+					try { console.WriteLine (factorialFind_iterative (i)); }
+					catch (OverflowException e)
+						{ throw new ChallengeException ($"The factorial of {i} is greater than {long.MaxValue}, and caused a long overflow.", e); }
+					catch (ArgumentOutOfRangeException e)
+						{ throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
+				}
+				else
+					throw new ChallengeException ($"'{args [1]}' is not a valid integer.");
+			}
+		}
+
+		private void printHelp (CustomConsole console)
+		{
+			console.WriteLine ("{:0}FactorialFinder", ConsoleColor.DarkGray);
+			console.WriteLine ("{0:}Calculates the factorial of a number.", ConsoleColor.Gray);
+			console.WriteLine ("{0:}The factorial of a number is defined as the product of all (whole) positive numbers less than or equal to that number.", ConsoleColor.Gray);
+			console.WriteLine ();
+			console.WriteLine ("{0:}Usage:", ConsoleColor.Gray);
+			console.WriteLine ("	{0:}FactorialFinder <{1:}n{0:}>", ConsoleColor.White, ConsoleColor.Cyan);
+			console.WriteLine ("	{0:}<{1:}n{0:}>{2:} : The number to calculate the factorial of. Must be a positive integer.", ConsoleColor.White, ConsoleColor.Cyan, ConsoleColor.Gray);
 		}
 	}
 }
