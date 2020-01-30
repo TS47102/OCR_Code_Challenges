@@ -209,13 +209,13 @@ namespace GCSE_ConsoleApp.Browser
 
 			IConsoleChallenge challenge = null;
 
-			try
-			{ challenge = ChallengeReflector.createChallenge (args [0]); }
-			catch (ArgumentException ex) { e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+			try { challenge = ChallengeReflector.createChallenge (args [0]); }
+			catch (ArgumentException ex)
+				{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 
-			try
-			{ challenge?.execute (args); }
-			catch (ChallengeException ex) { e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+			try { challenge?.execute (args); }
+			catch (ChallengeException ex)
+				{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 
 		/// <summary>
