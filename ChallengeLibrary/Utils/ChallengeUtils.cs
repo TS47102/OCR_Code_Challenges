@@ -1,6 +1,7 @@
 ﻿using System;
 using ChallengeLibrary.Exceptions;
 using PixelLib.ConsoleHelpers;
+using PixelLib.ExtensionMethods;
 
 namespace ChallengeLibrary.Utils
 {
@@ -27,6 +28,18 @@ namespace ChallengeLibrary.Utils
 
 			if (args.Length < minimumArgs)
 				throw new ChallengeArgumentCountException ($"Expected at least {minimumArgs} arguments, but got {args.Length} instead.", args.Length, minimumArgs);
+		}
+
+		/// <summary>
+		/// Checks whether the second given argument (The first argument after the challenge identifier) is a help command.
+		/// </summary>
+		/// <remarks>A help command flag is considered to be one of the following: <c>'?', '/?', 'help', '--help'</c>.</remarks>
+		/// <param name="args">The given arguments.</param>
+		/// <returns>Whether or not <paramref name="args"/>[1] is flag indicating a help command.</returns>
+		public static bool isHelpCommand (string [] args)
+		{
+			string [] helpCommands = { "?", "/?", "help", "--help" };
+			return args != null && args.Length > 2 && helpCommands.contains (args [1], StringComparison.OrdinalIgnoreCase);
 		}
 	}
 }
