@@ -9,8 +9,9 @@ namespace ChallengeLibrary.Reflection
 	public static class ChallengeReflector
 	{
 		private const string challengeNamespace = "ChallengeLibrary.Challenges";
-		private static readonly ImmutableDictionary<string, Type> challengeTypeDictionary = getChallengeTypes ();
 		private static bool staticInitDone = false;
+
+		public static ImmutableDictionary<string, Type> challengeTypeDictionary { get; } = getChallengeTypes ();
 
 		private static ImmutableDictionary<string, Type> getChallengeTypes ()
 		{
