@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Reflection;
-using GCSE_ConsoleApp.ChallengeProxies;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
 
