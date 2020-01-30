@@ -1,5 +1,6 @@
 ﻿using System;
 using ChallengeLibrary.Exceptions;
+using ChallengeLibrary.Utils;
 using ChallengeLibrary.Reflection;
 using PixelLib.ConsoleHelpers;
 
@@ -64,14 +65,7 @@ namespace ChallengeLibrary.Challenges
 		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object)")]
 		public void execute (CustomConsole console, string [] args)
 		{
-			if (console == null)
-				throw new ArgumentNullException (nameof (console), "Cannot print to null console.");
-
-			if (args == null)
-				throw new ArgumentNullException (nameof (args), "Cannot execute on null arguments.");
-
-			if (args.Length < 2)
-				throw new ChallengeArgumentCountException ("At least 2 arguments are required.", args.Length, 2);
+			ChallengeUtils.validateArgs (console, args, 2);
 
 			if (int.TryParse (args [1], out int i))
 			{
