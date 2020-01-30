@@ -197,7 +197,7 @@ namespace GCSE_ConsoleApp.Browser
 		}
 
 		/// <summary>
-		/// Invoke a <see cref="ChallengeProxy"/>.
+		/// Invoke an <see cref="IConsoleChallenge"/>.
 		/// </summary>
 		/// <param name="e">The event args.</param>
 		private static void invokeProxy (PostConsoleInputEventArgs e)
