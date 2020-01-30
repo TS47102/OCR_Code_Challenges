@@ -76,7 +76,7 @@ namespace ChallengeLibrary.Challenges
 					{ throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
 			}
 			else
-				throw new ChallengeException ($"'{i}' is not a valid integer.");
+				throw new ChallengeException ($"'{args [1]}' is not a valid integer.");
 		}
 	}
 }
