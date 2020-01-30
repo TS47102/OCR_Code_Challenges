@@ -5,12 +5,19 @@ using ChallengeLibrary.Reflection;
 namespace ChallengeLibrary.Exceptions
 {
 	/// <summary>
-	/// Indicates that an <see cref="IConsoleChallenge"/> has not been provided with enough arguments.
+	/// Indicates that an <see cref="IConsoleChallenge"/> has been provided with an unacceptable number of arguments.
 	/// </summary>
 	[Serializable]
 	public class ChallengeArgumentCountException : ChallengeException
 	{
+		/// <summary>
+		/// The number of arguments the <see cref="IConsoleChallenge"/> was provided with.
+		/// </summary>
 		public int providedArgumentCount { get; }
+
+		/// <summary>
+		/// The number of arguments the <see cref="IConsoleChallenge"/> was expecting.
+		/// </summary>
 		public int expectedArgumentCount { get; }
 
 		public ChallengeArgumentCountException () : base ()
