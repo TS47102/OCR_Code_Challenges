@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450E29F3-9990-4F78-9F3B-D85803617B22}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		OCR_code_challenges_1-80.pdf = OCR_code_challenges_1-80.pdf
 		Pixelstorm.ruleset = Pixelstorm.ruleset
 	EndProjectSection
 EndProject
