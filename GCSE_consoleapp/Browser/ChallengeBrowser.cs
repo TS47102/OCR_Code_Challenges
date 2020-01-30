@@ -202,6 +202,8 @@ namespace GCSE_ConsoleApp.Browser
 		/// <param name="e">The event args.</param>
 		private static void invokeProxy (PostConsoleInputEventArgs e)
 		{
+			ColourConsole colourConsole = e.consoleUsed as ColourConsole;
+
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
 				throw new ArgumentException ("Cannot handle empty input.", nameof (e));
 
@@ -211,11 +213,11 @@ namespace GCSE_ConsoleApp.Browser
 
 			try { challenge = ChallengeReflector.createChallenge (args [0]); }
 			catch (ArgumentException ex)
-				{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+				{ colourConsole.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 
 			try { challenge?.execute (args); }
 			catch (ChallengeException ex)
-				{ e.consoleUsed.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
+				{ colourConsole.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}
 
 		/// <summary>
