@@ -1,7 +1,9 @@
-﻿namespace ChallengeLibrary.Reflection
+﻿using PixelLib.ConsoleHelpers;
+
+namespace ChallengeLibrary.Reflection
 {
 	public interface IConsoleChallenge
 	{
-		void execute (string [] args);
+		void execute (CustomConsole console, string [] args);
 	}
 }
