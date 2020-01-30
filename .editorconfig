@@ -130,8 +130,8 @@ dotnet_diagnostic.CA1068.severity = warning
 # CA1200: Avoid using cref tags with a prefix
 dotnet_diagnostic.CA1200.severity = warning
 
-# CA1303: Do not pass literals as localized parameters
-dotnet_diagnostic.CA1303.severity = warning
+# CA1303: Do not pass literals as localized parameters - Being monolingual, attempting to fix this would be far too much work for little/no benefit.
+dotnet_diagnostic.CA1303.severity = none
 
 # CA1304: Specify CultureInfo
 dotnet_diagnostic.CA1304.severity = warning
@@ -172,8 +172,8 @@ dotnet_diagnostic.CA1508.severity = warning
 # CA1509: Invalid entry in code metrics rule specification file
 dotnet_diagnostic.CA1509.severity = warning
 
-# CA1707: Identifiers should not contain underscores
-dotnet_diagnostic.CA1707.severity = warning
+# CA1707: Identifiers should not contain underscores - Personal naming conventions allow underscores in identifiers, although advised against outside of constants.
+dotnet_diagnostic.CA1707.severity = none
 
 # CA1708: Identifiers should differ by more than case
 dotnet_diagnostic.CA1708.severity = warning
