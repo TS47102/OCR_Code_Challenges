@@ -20,20 +20,9 @@ namespace ChallengeLibrary.Exceptions
 		/// </summary>
 		public int expectedArgumentCount { get; }
 
-		public ChallengeArgumentCountException () : base ()
-		{
-
-		}
-
-		public ChallengeArgumentCountException (string message) : base (message)
-		{
-
-		}
-
-		public ChallengeArgumentCountException (string message, Exception innerException) : base (message, innerException)
-		{
-
-		}
+		public ChallengeArgumentCountException () : base () { }
+		public ChallengeArgumentCountException (string message) : base (message) { }
+		public ChallengeArgumentCountException (string message, Exception innerException) : base (message, innerException) { }
 
 		public ChallengeArgumentCountException (int providedArgumentCount, int expectedArgumentCount) : base ($"Recieved {providedArgumentCount} arguments when {expectedArgumentCount} were expected.")
 		{
@@ -59,9 +48,6 @@ namespace ChallengeLibrary.Exceptions
 			this.expectedArgumentCount = expectedArgumentCount;
 		}
 
-		protected ChallengeArgumentCountException (SerializationInfo info, StreamingContext context) : base (info, context)
-		{
-
-		}
+		protected ChallengeArgumentCountException (SerializationInfo info, StreamingContext context) : base (info, context) { }
 	}
 }
