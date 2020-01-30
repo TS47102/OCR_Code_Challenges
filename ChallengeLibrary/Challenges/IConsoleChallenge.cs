@@ -1,6 +1,6 @@
 ﻿using PixelLib.ConsoleHelpers;
 
-namespace ChallengeLibrary.Reflection
+namespace ChallengeLibrary.Challenges
 {
 	public interface IConsoleChallenge
 	{

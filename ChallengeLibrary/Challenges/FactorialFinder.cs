@@ -1,7 +1,6 @@
 ﻿using System;
 using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Utils;
-using ChallengeLibrary.Reflection;
 using PixelLib.ConsoleHelpers;
 
 namespace ChallengeLibrary.Challenges

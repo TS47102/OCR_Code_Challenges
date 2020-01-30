@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using ChallengeLibrary.Reflection;
 
 namespace ChallengeLibrary.Exceptions
 {

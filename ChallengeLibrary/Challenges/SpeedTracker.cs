@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
-using ChallengeLibrary.Reflection;
 using PixelLib.ConsoleHelpers;
 
 namespace ChallengeLibrary.Challenges
