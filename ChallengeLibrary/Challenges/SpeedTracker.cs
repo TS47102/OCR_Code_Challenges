@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 using ChallengeLibrary.Reflection;
+using PixelLib.ConsoleHelpers;
 
 namespace ChallengeLibrary.Challenges
 {
@@ -69,7 +70,7 @@ namespace ChallengeLibrary.Challenges
 			}
 		}
 
-		public void execute (string [] args)
+		public void execute (CustomConsole console, string [] args)
 		{
 			throw new NotImplementedException ("TODO: Implement");
 		}

@@ -214,7 +214,7 @@ namespace GCSE_ConsoleApp.Browser
 			catch (ArgumentException ex)
 				{ colourConsole.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 
-			try { challenge?.execute (args); }
+			try { challenge?.execute (colourConsole, args); }
 			catch (ChallengeException ex)
 				{ colourConsole.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Reflection;
+using PixelLib.ConsoleHelpers;
 
 namespace ChallengeLibrary.Challenges
 {
@@ -61,7 +62,7 @@ namespace ChallengeLibrary.Challenges
 		// Suppressing CA1305 here is fine as string interpolation defaults to the Current Culture.
 		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object)")]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object,System.Object)")]
-		public void execute (string [] args)
+		public void execute (CustomConsole console, string [] args)
 		{
 			if (args == null)
 				throw new ArgumentNullException (nameof (args), "Cannot execute on null arguments.");
@@ -69,7 +70,7 @@ namespace ChallengeLibrary.Challenges
 				throw new ChallengeArgumentCountException ("At least 2 arguments are required.", args.Length, 2);
 			if (int.TryParse (args [1], out int i))
 			{
-				try { Console.WriteLine (factorialFind_iterative (i)); }
+				try { console.WriteLine (factorialFind_iterative (i)); }
 				catch (OverflowException e)
 					{ throw new ChallengeException ($"The factorial of {i} is greater than {int.MaxValue}, and caused an integer overflow.", e); }
 				catch (ArgumentOutOfRangeException e)
