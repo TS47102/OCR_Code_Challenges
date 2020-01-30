@@ -39,7 +39,7 @@ namespace ChallengeLibrary.Utils
 		public static bool isHelpCommand (string [] args)
 		{
 			string [] helpCommands = { "?", "/?", "help", "--help" };
-			return args != null && args.Length > 2 && helpCommands.contains (args [1], StringComparison.OrdinalIgnoreCase);
+			return args != null && args.Length >= 2 && helpCommands.contains (args [1], StringComparison.OrdinalIgnoreCase);
 		}
 	}
 }
