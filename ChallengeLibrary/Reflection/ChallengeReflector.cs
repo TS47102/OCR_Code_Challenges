@@ -8,14 +8,15 @@ namespace ChallengeLibrary.Reflection
 {
 	public static class ChallengeReflector
 	{
-		// The ImmutableDictionary, unlike the normal Dictionary, is immutable - so suppressing CA2104 here is fine.
-		// [System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
-		private static readonly ImmutableDictionary<string, Type> challengeTypeDictionary = getChallengeTypes ();
-
 		private const string challengeNamespace = "ChallengeLibrary.Challenges";
+		private static readonly ImmutableDictionary<string, Type> challengeTypeDictionary = getChallengeTypes ();
+		private static bool staticInitDone = false;
 
 		private static ImmutableDictionary<string, Type> getChallengeTypes ()
 		{
+			if (staticInitDone)
+				return challengeTypeDictionary;
+
 			IEnumerable<Type> types = getLoadableTypes (typeof (ChallengeReflector).Assembly).Where (t => t.IsClass
 																									&& !t.IsAbstract
 																									&& t.Namespace.StartsWith (challengeNamespace, StringComparison.Ordinal)
@@ -26,7 +27,11 @@ namespace ChallengeLibrary.Reflection
 			foreach (Type t in types)
 				builder.Add (t.Name, t);
 
-			return builder.ToImmutable ();
+			ImmutableDictionary<string, Type> result = builder.ToImmutable ();
+
+			staticInitDone = true;
+
+			return result;
 		}
 
 		public static IConsoleChallenge createChallenge (string challengeName)
