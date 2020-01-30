@@ -231,10 +231,8 @@ namespace GCSE_ConsoleApp.Browser
 			bool escapeNextChar = false;
 			string currentBlock = "";
 
-			for (int i = 0; i < rawArgs.Length; i++)
+			foreach (char currentChar in rawArgs)
 			{
-				char currentChar = rawArgs [i];
-
 				if (escapeNextChar)
 				{
 					currentBlock += currentChar;
