@@ -24,7 +24,7 @@ namespace ChallengeLibrary.Challenges
 		/// <exception cref="OverflowException">Thrown whenever the resulting factorial of <paramref name="number"/> exceeds <see cref="long.MaxValue"/>.
 		/// In practice, this occurs whenever <paramref name="number"/> is greater than <c>20</c>.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">Thrown whenever <paramref name="number"/> is less than <c>0</c>.</exception>
-		public static long factorialFind_iterative (int number)
+		public static long factorialFindIterative (int number)
 		{
 			if (number < 0)
 				throw new ArgumentOutOfRangeException (nameof (number), number, "Factorial is not defined for negative values.");
@@ -44,7 +44,7 @@ namespace ChallengeLibrary.Challenges
 		/// <exception cref="OverflowException">Thrown whenever the resulting factorial of <paramref name="number"/> exceeds <see cref="long.MaxValue"/>.
 		/// In practice, this occurs whenever <paramref name="number"/> is greater than <c>20</c>.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">Thrown whenever <paramref name="number"/> is less than <c>0</c>.</exception>
-		public static long factorialFind_recursive (int number)
+		public static long factorialFindRecursive (int number)
 		{
 			if (number < 0)
 				throw new ArgumentOutOfRangeException (nameof (number), number, "Factorial is not defined for negative values.");
@@ -86,7 +86,7 @@ namespace ChallengeLibrary.Challenges
 			{
 				if (int.TryParse (args [i], out int num))
 				{
-					try { console.WriteLine (num + " {Gray:}-> {Yellow:}" + (useRecursive ? factorialFind_recursive (num) : factorialFind_iterative (num))); }
+					try { console.WriteLine (num + " {Gray:}-> {Yellow:}" + (useRecursive ? factorialFindRecursive (num) : factorialFindIterative (num))); }
 					catch (OverflowException)
 						{ console.WriteLine ($"{{Red:}}The factorial of {num} is greater than {long.MaxValue}, and caused a long overflow."); }
 					catch (ArgumentOutOfRangeException)
