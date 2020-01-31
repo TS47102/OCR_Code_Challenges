@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Reflection;
 using ChallengeLibrary.Challenges;
+using ChallengeLibrary.Utils;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
 
@@ -13,21 +14,6 @@ namespace GCSE_ConsoleApp.Browser
 	/// </summary>
 	public class ChallengeBrowser
 	{
-		/// <summary>
-		/// The <see cref="char"/> to signal the start/end of a string literal in an argument.
-		/// </summary>
-		private const char INPUT_BLOCK_DELIMITER = '"';
-
-		/// <summary>
-		/// The <see cref="char"/> to seperate arguments with.
-		/// </summary>
-		private const char INPUT_ARG_DELIMITER = ' ';
-
-		/// <summary>
-		/// The <see cref="char"/> to escape the next <see cref="char"/> in an argument.
-		/// </summary>
-		private const char INPUT_ESCAPE_CHAR = '\\';
-
 		/// <summary>
 		/// Commands to exit the browser.
 		/// </summary>
@@ -206,7 +192,7 @@ namespace GCSE_ConsoleApp.Browser
 			if (string.IsNullOrWhiteSpace (e.consoleInput))
 				throw new ArgumentException ("Cannot handle empty input.", nameof (e));
 
-			string [] args = parseArgs (e.consoleInput);
+			string [] args = ChallengeUtils.parseArgs (e.consoleInput);
 
 			IConsoleChallenge challenge = null;
 
@@ -217,60 +203,6 @@ namespace GCSE_ConsoleApp.Browser
 			try { challenge?.execute (colourConsole, args); }
 			catch (ChallengeException ex)
 				{ colourConsole.WriteLine ("{0:}" +  ex.Message, ConsoleColor.Red); }
-		}
-
-		/// <summary>
-		/// Split a raw <see cref="string"/> input into an array of arguments.
-		/// </summary>
-		/// <param name="rawArgs">The <see cref="string"/> to parse into an array of arguments.</param>
-		/// <returns>An array of the arguments in <paramref name="rawArgs"/>.</returns>
-		private static string [] parseArgs (string rawArgs)
-		{
-			List<string> blocks = new List<string> ();
-
-			bool inBlock = false;
-			bool escapeNextChar = false;
-			string currentBlock = "";
-
-			foreach (char currentChar in rawArgs)
-			{
-				if (escapeNextChar)
-				{
-					currentBlock += currentChar;
-					escapeNextChar = false;
-				}
-				else
-				{
-					switch (currentChar)
-					{
-						case INPUT_ESCAPE_CHAR:
-							escapeNextChar = true;
-							break;
-
-						case INPUT_ARG_DELIMITER:
-							if (inBlock)
-								currentBlock += currentChar;
-							else
-							{
-								blocks.Add (currentBlock);
-								currentBlock = "";
-							}
-							break;
-
-						case INPUT_BLOCK_DELIMITER:
-							inBlock = !inBlock;
-							break;
-
-						default:
-							currentBlock += currentChar;
-							break;
-					}
-				}
-			}
-
-			blocks.Add (currentBlock);
-
-			return blocks.ToArray ();
 		}
 
 		/// <summary>
