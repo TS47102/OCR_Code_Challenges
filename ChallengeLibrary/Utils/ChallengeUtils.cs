@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using ChallengeLibrary.Exceptions;
 using PixelLib.ConsoleHelpers;
 using PixelLib.ExtensionMethods;
@@ -65,13 +66,13 @@ namespace ChallengeLibrary.Utils
 
 			bool inBlock = false;
 			bool escapeNextChar = false;
-			string currentBlock = "";
+			StringBuilder blockBuilder = new StringBuilder ();
 
 			foreach (char currentChar in rawArgs)
 			{
 				if (escapeNextChar)
 				{
-					currentBlock += currentChar;
+					blockBuilder.Append (currentChar);
 					escapeNextChar = false;
 				}
 				else
@@ -79,11 +80,11 @@ namespace ChallengeLibrary.Utils
 					if (currentChar == argSeparator)
 					{
 						if (inBlock)
-							currentBlock += currentChar;
+							blockBuilder.Append (currentChar);
 						else
 						{
-							blocks.Add (currentBlock);
-							currentBlock = "";
+							blocks.Add (blockBuilder.ToString ());
+							blockBuilder.Clear ();
 						}
 					}
 					else if (currentChar == argDelimiter)
@@ -91,11 +92,11 @@ namespace ChallengeLibrary.Utils
 					else if (currentChar == escapeChar)
 						escapeNextChar = true;
 					else
-						currentBlock += currentChar;
+						blockBuilder.Append (currentChar);
 				}
 			}
 
-			blocks.Add (currentBlock);
+			blocks.Add (blockBuilder.ToString ());
 
 			return blocks.ToArray ();
 		}
