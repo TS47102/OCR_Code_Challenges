@@ -15,6 +15,8 @@ namespace ChallengeLibrary.Challenges
 	/// </remarks>
 	public class FactorialFinder : IConsoleChallenge
 	{
+		public const string USE_RECURSIVE_FLAG = "-r";
+
 		/// <summary>
 		/// Calculates the factorial of <paramref name="number"/> iteratively.
 		/// </summary>
@@ -70,16 +72,32 @@ namespace ChallengeLibrary.Challenges
 				printHelp (console);
 			else
 			{
-				if (int.TryParse (args [1], out int i))
+				if (string.Equals (args [1], USE_RECURSIVE_FLAG, StringComparison.OrdinalIgnoreCase))
+					calculate (console, args, 2, true);
+				else
+					calculate (console, args, 1, false);
+			}
+		}
+
+		private void calculate (CustomConsole console, string [] args, int startIndex, bool useRecursive)
+		{
+			if (useRecursive)
+				console.WriteLine ("{Magenta:}Computing recursively.");
+			else
+				console.WriteLine ("{Magenta:}Computing iteratively.");
+
+			for (int i = startIndex; i < args.Length; ++i)
+			{
+				if (int.TryParse (args [i], out int num))
 				{
-					try { console.WriteLine (factorialFind_iterative (i)); }
-					catch (OverflowException e)
-						{ throw new ChallengeException ($"The factorial of {i} is greater than {long.MaxValue}, and caused a long overflow.", e); }
-					catch (ArgumentOutOfRangeException e)
-						{ throw new ChallengeException ("Factorial is not defined for negative values.", e); }
+					try { console.WriteLine (num + " {Gray:}-> {Yellow:}" + (useRecursive ? factorialFind_recursive (num) : factorialFind_iterative (num))); }
+					catch (OverflowException)
+						{ console.WriteLine ($"{{Red:}}The factorial of {num} is greater than {long.MaxValue}, and caused a long overflow."); }
+					catch (ArgumentOutOfRangeException)
+						{ console.WriteLine ($"{{Red:}}{num} is negative, and factorial is not defined for negative values."); }
 				}
 				else
-					throw new ChallengeException ($"'{args [1]}' is not a valid integer.");
+					console.WriteLine ($"{{Red:}}'{args [i]}' is not a valid integer.");
 			}
 		}
 
@@ -90,8 +108,9 @@ namespace ChallengeLibrary.Challenges
 			console.WriteLine ("{0:}The factorial of a number is defined as the product of all (whole) positive numbers less than or equal to that number.", ConsoleColor.Gray);
 			console.WriteLine ();
 			console.WriteLine ("{0:}Usage:", ConsoleColor.Gray);
-			console.WriteLine ("	{0:}FactorialFinder <{1:}n{0:}>", ConsoleColor.White, ConsoleColor.Cyan);
-			console.WriteLine ("	{0:}<{1:}n{0:}>{2:} : The number to calculate the factorial of. Must be a positive integer.", ConsoleColor.White, ConsoleColor.Cyan, ConsoleColor.Gray);
+			console.WriteLine ($"	{{0:}}FactorialFinder [{{1:}}{USE_RECURSIVE_FLAG}{{0:}}] <{{1:}}numbers{{0:}}>", ConsoleColor.White, ConsoleColor.Cyan);
+			console.WriteLine ($"	{{0:}}[{{1:}}{USE_RECURSIVE_FLAG}{{0:}}]{{2:}} : {{3:}}Optional flag. {{2:}}Specifies to use a recursive calculation rather than an iterative calculation.", ConsoleColor.White, ConsoleColor.Cyan, ConsoleColor.Gray, ConsoleColor.Magenta);
+			console.WriteLine ("	{0:}<{1:}numbers{0:}>{2:} : One or more positive integers separated by spaces, to calculate the factorials of.", ConsoleColor.White, ConsoleColor.Cyan, ConsoleColor.Gray);
 		}
 	}
 }
