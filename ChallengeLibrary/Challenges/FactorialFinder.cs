@@ -1,5 +1,4 @@
 ﻿using System;
-using ChallengeLibrary.Exceptions;
 using ChallengeLibrary.Utils;
 using PixelLib.ConsoleHelpers;
 
