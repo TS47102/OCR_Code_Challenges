@@ -76,7 +76,7 @@ namespace ChallengeLibrary.Challenges
 					catch (OverflowException e)
 						{ throw new ChallengeException ($"The factorial of {i} is greater than {long.MaxValue}, and caused a long overflow.", e); }
 					catch (ArgumentOutOfRangeException e)
-						{ throw new ChallengeException ("Cannot calculate factorial of negative values.", e); }
+						{ throw new ChallengeException ("Factorial is not defined for negative values.", e); }
 				}
 				else
 					throw new ChallengeException ($"'{args [1]}' is not a valid integer.");
