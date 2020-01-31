@@ -25,7 +25,7 @@ namespace ChallengeLibrary.Challenges
 		public static readonly string OUTPUTFOLDER_PATH = @"..\ProgramData\SpeedTracker\";
 		public static readonly string OUTPUTFILE_EXTENSION = "txt";
 
-		public static double averageSpeed (DateTime firstCameraTime, DateTime secondCameraTime)
+		public static double averageSpeedMph (DateTime firstCameraTime, DateTime secondCameraTime)
 		{
 			return CAMERA_DISTANCE_MILES / secondCameraTime.Subtract (firstCameraTime).TotalHours;
 		}
