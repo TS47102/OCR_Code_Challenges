@@ -46,9 +46,6 @@ namespace GCSE_ConsoleApp.Browser
 		/// Write some explanatory messages and stall for a bit, before halting the program.
 		/// </summary>
 		/// <param name="console">The console to write to.</param>
-		// Suppressing CA1305 here is OK: The text will be displayed to the user, so the Current Culture should be used, and string interpolation defaults to the Current Culture.
-		// There is also no way to explicitly specify any culture for string interpolation other than the Invariant culture.
-		[System.Diagnostics.CodeAnalysis.SuppressMessage ("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", MessageId = "System.String.Format(System.String,System.Object)")]
 		private static void finishExit (ColourConsole console)
 		{
 			console.WriteLine ($"{{0:1}}Program finished. Press any key to quit, or wait {{2:1}}{AUTOEXIT_MILLIS / 1000}{{0:1}} seconds for the program to automatically exit. ", ConsoleColor.Black, ConsoleColor.White, ConsoleColor.DarkMagenta);
