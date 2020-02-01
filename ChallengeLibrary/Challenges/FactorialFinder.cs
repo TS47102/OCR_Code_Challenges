@@ -87,10 +87,10 @@ namespace ChallengeLibrary.Challenges
 				if (int.TryParse (args [i], out int num))
 				{
 					try { console.WriteLine (num + " {Gray:}-> {Yellow:}" + (useRecursive ? factorialFindRecursive (num) : factorialFindIterative (num))); }
-					catch (OverflowException)
-						{ console.WriteLine ($"{{Red:}}The factorial of {num} is greater than {long.MaxValue}, and caused a long overflow."); }
-					catch (ArgumentOutOfRangeException)
-						{ console.WriteLine ($"{{Red:}}{num} is negative, and factorial is not defined for negative values."); }
+					catch (OverflowException e)
+						{ console.WriteLine (num + "{Gray:} -> {Red:}" + e.Message); }
+					catch (ArgumentOutOfRangeException e)
+						{ console.WriteLine (e.ActualValue + "{Gray:} -> {Red:}Factorial is not defined for negative values."); }
 				}
 				else
 					console.WriteLine ($"{{Red:}}'{args [i]}' is not a valid integer.");
