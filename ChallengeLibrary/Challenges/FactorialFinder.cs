@@ -99,9 +99,8 @@ namespace ChallengeLibrary.Challenges
 
 		private void printHelp (CustomConsole console)
 		{
-			console.WriteLine ("{:0}FactorialFinder", ConsoleColor.DarkGray);
-			console.WriteLine ("{0:}Calculates the factorial of a number.", ConsoleColor.Gray);
-			console.WriteLine ("{0:}The factorial of a number is defined as the product of all (whole) positive numbers less than or equal to that number.", ConsoleColor.Gray);
+			console.WriteLine ("{:0}#1: FactorialFinder", ConsoleColor.DarkGray);
+			console.WriteLine ("{0:}\"The Factorial of a positive integer, n, is defined as the product of the sequence n, n-1, n-2, ...1 and the factorial of zero, 0, is defined as being 1. Solve this using both loops and recursion.\"", ConsoleColor.Gray);
 			console.WriteLine ();
 			console.WriteLine ("{0:}Usage:", ConsoleColor.Gray);
 			console.WriteLine ($"	{{0:}}FactorialFinder [{{1:}}{USE_RECURSIVE_FLAG}{{0:}}] <{{1:}}numbers{{0:}}>", ConsoleColor.White, ConsoleColor.Cyan);
